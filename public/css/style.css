@@ -1,0 +1,26 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    display: flex;
+    height: 100vw;
+    justify-content: center;
+}
+
+.left {
+    background-color: #f9cb9cff;
+    flex: 1 1 35%;
+    display: flex;
+    flex: column;
+    align-items: center;
+}
+
+.right {
+    background-color: black;
+    flex: 1 1 65%;
+}
+
+.logo {
+    
+}
