@@ -180,6 +180,7 @@ body {
 .library {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .books-you-own,
@@ -190,6 +191,7 @@ body {
     color: white;
     text-align: center;
     font-weight: bold;
+    flex: 1 1 500px;
 }
 
 .library-title {
@@ -200,6 +202,7 @@ body {
 
 .profile {
     margin-bottom: 10px;
+    color: black;
 }
 
 .profile-image {
@@ -218,16 +221,85 @@ body {
     font-weight: bold;
 }
 
+.card {
+    background-color: black;
+    border: 2px solid white;
+}
+
 .card-header-title {
     color: white;
 }
 
-.card-header {
-    border: 2px white solid;
+.card-content {
+    color: white;
+    border-bottom: 2px solid white;
+    border-color: white;
+    display: flex;
+}
+
+.card-footer {
+    background-color: var(--brand-orange);
+    color: black;
+}
+
+.card-footer > a {
+    color: black;
+}
+
+.owned-book {
+    background-color: red;
+}
+
+.media-left {
+    float: left;
 }
 
 .spacer {
     background-color: var(--brand-orange);
     width: 5px;
     margin: 10px;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+}
+
+@media (max-width: 1700px) {
+    .profile {
+        order: 1;
+    }
+
+    .spacer-one {
+        order: 2;
+    }
+
+    .books-you-own {
+        order: 3;
+    }
+
+    .spacer-two {
+        order: 4;
+    }
+
+    .books-you-borrow {
+        order: 5;
+    }
+
+}
+
+@media (max-width: 1660px) {
+
+    .spacer-two {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1150px) {
+
+    .spacer-one {
+        display: none;
+    }
+
 }
