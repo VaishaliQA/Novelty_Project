@@ -9,6 +9,28 @@
 html,
 body {
     height: 100%;
+    background-color: black;
+}
+
+/* This is the wrapper for the logo, search, browse, your library, and logout options */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.nav > img {
+    max-width: 200px;
+}
+
+.tabs{
+
+}
+
+.logo {
+    background-color: var(--brand-orange);
 }
 
 /* This is the main wrapper for all content */
@@ -62,3 +84,44 @@ body {
     color: white;
 }
 
+/* Used on browse page to show steps */
+
+.browse {
+    background-color: red;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.steps {
+    display: flex;
+    height: fit-content;
+    padding-top: 25px;
+}
+
+.step {
+    background-color: aqua;
+    border: 1px solid red;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    margin: auto;
+}
+
+.all-books {
+    background-color: aquamarine;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    margin: 10px;
+}
+
+.card-image {
+    width: 250px;
+    flex: 1 1 250px;
+}
