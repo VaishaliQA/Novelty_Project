@@ -198,6 +198,26 @@ body {
     margin: 25px 12px 25px 12px;
 }
 
+.profile {
+    margin-bottom: 10px;
+}
+
+.profile-image {
+    background-color: white;
+    margin-top: 25px;
+}
+
+.profile-info {
+    background-color: var(--brand-orange);
+    text-align: left;
+    height: 100vw;
+    padding: 10px;
+}
+
+.profile-info > h3 {
+    font-weight: bold;
+}
+
 .card-header-title {
     color: white;
 }
