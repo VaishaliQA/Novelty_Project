@@ -174,3 +174,40 @@ body {
     width: 250px;
     flex: 1 1 250px;
 }
+
+/* Begin Library CSS */
+
+.library {
+    display: flex;
+    justify-content: space-between;
+}
+
+.books-you-own,
+.books-you-borrow,
+.profile {
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.library-title {
+    border: 3px solid white;
+    padding: 10px;
+    margin: 25px 12px 25px 12px;
+}
+
+.card-header-title {
+    color: white;
+}
+
+.card-header {
+    border: 2px white solid;
+}
+
+.spacer {
+    background-color: var(--brand-orange);
+    width: 5px;
+    margin: 10px;
+}
