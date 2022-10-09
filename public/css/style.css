@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: bottom;
     padding-top: 20px;
 }
 
@@ -25,12 +25,25 @@ body {
     max-width: 200px;
 }
 
-.tabs{
+.browseTab,
+.yourLibraryTab,
+.logoutTab {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 10px;
+    margin-bottom: -1px;
+}
 
+.browseButton,
+.yourLibraryButton,
+.logOutButton {
+    border: 0px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 .logo {
     background-color: var(--brand-orange);
+    margin-bottom: 10px;
 }
 
 /* This is the main wrapper for all content */
@@ -90,9 +103,10 @@ body {
     background-color: black;
     border: 15px solid var(--brand-orange);
     width: 100%;
+    height: fit-content;
     padding-left: 25px;
     padding-right: 25px;
-    margin: 25px;
+    margin: 0px 25px 25px 25px;
 }
 
 .steps {
@@ -130,6 +144,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-bottom: 10px;
 }
 
 .card {
