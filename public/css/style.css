@@ -1,5 +1,6 @@
 :root {
     font-family: Arial, Helvetica, sans-serif;
+    --brand-orange: #f9cb9cff;
 }
 
 html,
@@ -19,13 +20,34 @@ body {
     display: flex;
     flex: column;
     align-items: center;
+    justify-content: center;
 }
 
 .right {
     background-color: black;
     flex: 1 1 65%;
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo {
-    
+.loginForm {
+    width: 70%;
+
 }
+
+.input,
+.button {
+    width: 100%;
+}
+
+.button {
+    background-color: var(--brand-orange);
+    font-weight: bold;
+}
+
+.label {
+    color: white;
+}
+
