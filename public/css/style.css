@@ -117,7 +117,8 @@ body {
 
 /* Used on browse page to show steps */
 
-.browse {
+.browse,
+.library {
     background-color: black;
     border: 15px solid var(--brand-orange);
     width: 100%;
