@@ -87,29 +87,44 @@ body {
 /* Used on browse page to show steps */
 
 .browse {
-    background-color: red;
+    background-color: black;
+    border: 15px solid var(--brand-orange);
     width: 100%;
     padding-left: 25px;
     padding-right: 25px;
+    margin: 25px;
 }
 
 .steps {
     display: flex;
     height: fit-content;
     padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .step {
-    background-color: aqua;
-    border: 1px solid red;
+    background-color: black;
+    border: 2px solid white;
+    color: var(--brand-orange);
+    font-weight: bold;
     width: 250px;
     height: 150px;
     text-align: center;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 25px;
+    
+}
+
+.num {
+    color: white;
 }
 
 .all-books {
-    background-color: aquamarine;
     width: 100%;
     height: fit-content;
     display: flex;
