@@ -277,6 +277,33 @@ li {
     text-align: left;
 }
 
+/* Read status dropdown */
+.status-unread {
+    color: #ea9999;
+    background-color: black;
+}
+
+.status-unread:hover {
+    background-color: rgba(255, 255, 255, .5);
+    color: #ea9999;
+}
+
+.status-are-reading {
+    color: #fff2cc;
+    background-color: black;
+}
+
+.status-have-read {
+    color: #b6d7a8;
+    background-color: black;
+}
+
+.dropdown-item-hover-background-color {
+    background-color: red;
+}
+
+/* Begin mobile */
+
 @media (max-width: 1700px) {
     
     .books-you-own {
