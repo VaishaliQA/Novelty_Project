@@ -61,7 +61,7 @@ if (readStatus.val() === "You have not read this book.") {
 // Steps
 var step_one = $('.step-one');
 step_one.on('click', function() {
-  window.location.replace("/public/library.html");
+  openSearchModal();;
 })
 
 var step_two = $('.step-two');
@@ -72,4 +72,32 @@ step_two.on('click', function() {
 var step_three = $('.step-three');
 step_three.on('click', function() {
   window.location.replace("/public/library.html");
+})
+
+// Modal
+var searchModal = $('.add-book-modal');
+var addBookButton = $('.addBookButton');
+var addBookButtonLibrary = $('.addBookButtonLibrary');
+var close_modal_x = $('.modal-close');
+
+// Launch search modal on click
+function openSearchModal() {
+  searchModal.addClass("is-active");
+}
+
+// Hide search modal on Add Book click
+function closeSearchModal() {
+  searchModal.removeClass("is-active");
+}
+
+addBookButton.on('click', function() {
+  closeSearchModal();
+})
+
+close_modal_x.on('click', function() {
+  closeSearchModal();
+})
+
+addBookButtonLibrary.on('click', function() {
+  openSearchModal();
 })

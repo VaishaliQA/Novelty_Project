@@ -59,7 +59,7 @@
                 <section class="library-title">
                     <h1>Books You Own</h1>
                 </section>
-                <button class="button is-normal">ADD A BOOK</button>
+                <button class="button is-normal addBookButtonLibrary">ADD A BOOK</button>
                 <div class="card">
                     <header class="card-content">
                         <div class="media-left">
@@ -159,6 +159,50 @@
                     </p>
                 </section>
             </section>
+
+            <!-- Begin Add Book Modal -->
+        <div class="modal add-book-modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <!-- Any other Bulma elements you want -->
+
+            <!-- Begin Search Modal -->
+          <section class="searchModal">
+
+            <!-- Begin left -->
+            <section class="searchLeft">
+                <img class="logo" src="./assets/img/novelty-logo.png" alt="Novelty Logo">
+            </section>
+
+            <!-- Begin right -->
+            <section class="searchRight">
+
+                <!-- Begin search form -->
+                <section class="searchForm">
+
+                    <!-- Email field -->
+                    <section class="field isbn-field">
+                        <label class="label">ISBN</label>
+                        <p class="control has-icons-left has-icons-right">
+                        <input class="input" type="email" placeholder="ISBN">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-book"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        </p>
+                    </section>
+
+                    <!-- Add button -->
+                    <button class="button is-normal addBookButton" onClick="pageRedirect()">Add Book</button>
+
+                </section>
+            </section>
+        </section>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
         </section>
     </main> 
 <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> 

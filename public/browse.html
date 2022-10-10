@@ -18,9 +18,9 @@
     <!-- Begin header -->
     <nav class="nav">
         <img class="logo" src="./assets/img/novelty-logo.png" alt="Novelty Logo">
-        <section class="search">
 
-            <!-- Search field -->
+        <!-- Search field -->
+        <section class="search">
             <section class="search field">
                 <label class="label search-label">Search</label>
                 <p class="control has-icons-left has-icons-right">
@@ -33,8 +33,8 @@
                 </span>
                 </p>
             </section>
-
         </section>
+
         <section class="tabs">
             <section class="browseTab">
                 <button class="button is-normal browseButton">Browse</button>
@@ -140,6 +140,51 @@
                 </div>
             </section>
         </section>
+
+        <!-- Begin Add Book Modal -->
+        <div class="modal add-book-modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <!-- Any other Bulma elements you want -->
+
+            <!-- Begin Search Modal -->
+          <section class="searchModal">
+
+            <!-- Begin left -->
+            <section class="searchLeft">
+                <img class="logo" src="./assets/img/novelty-logo.png" alt="Novelty Logo">
+            </section>
+
+            <!-- Begin right -->
+            <section class="searchRight">
+
+                <!-- Begin search form -->
+                <section class="searchForm">
+
+                    <!-- Email field -->
+                    <section class="field isbn-field">
+                        <label class="label">ISBN</label>
+                        <p class="control has-icons-left has-icons-right">
+                        <input class="input" type="email" placeholder="ISBN">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-book"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        </p>
+                    </section>
+
+                    <!-- Add button -->
+                    <button class="button is-normal addBookButton" onClick="pageRedirect()">Add Book</button>
+
+                </section>
+            </section>
+        </section>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
     </main> 
     <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
