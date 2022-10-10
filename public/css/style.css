@@ -184,7 +184,7 @@ body {
 
 .browse-book {
     margin: 10px;
-    flex: 1 1 250px;
+    flex: 0 1 250px;
 }
 
 .browse-book-image {
