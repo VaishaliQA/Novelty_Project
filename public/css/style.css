@@ -3,6 +3,7 @@
     font-family: Arial, Helvetica, sans-serif;
     --brand-orange: #f9cb9cff;
     --brand-orange-hover: rgb(249, 211, 173);
+    --step-hover-bg: rgba(249, 211, 173, .5);
 }
 
 /* Cover the entire screen */
@@ -160,7 +161,12 @@ body {
     align-items: center;
     padding: 5px;
     margin-bottom: 25px;
-    
+}
+
+.step:hover {
+    background-color: var(--brand-orange);
+    color: black;
+    cursor: pointer;
 }
 
 .num {
@@ -176,13 +182,13 @@ body {
     margin-bottom: 10px;
 }
 
-.card {
+.browse-book {
     margin: 10px;
+    flex: 1 1 250px;
 }
 
-.card-image {
-    width: 250px;
-    flex: 1 1 250px;
+.browse-book-image {
+    width: 100%;
 }
 
 /* Begin Library CSS */
