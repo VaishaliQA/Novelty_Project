@@ -28,9 +28,25 @@ readStatus.on('click', function() {
   $(".dropdown").addClass( "is-active");
 })
 
-// Handle drop down mouseoff
-var readStatusDropdown = $('.dropdown-menu');
+// Handle drop down toggle
+var readStatusDropdown = $('.read-status-dropdown');
+readStatusDropdown.on('mouseover', function() {
+  $(".dropdown").addClass( "is-active");
+})
+
+// Handle hide drop down on selection
 readStatusDropdown.on('click', function() {
+  $(".dropdown").removeClass( "is-active");
+})
+
+// Handle hide drop down on selection
+var readStatusDropdownItem = $('.dropdown-item');
+readStatusDropdownItem.on('click', function() {
+  $(".dropdown").removeClass( "is-active");
+})
+
+// Handle hide drop down on selection
+readStatusDropdownItem.on('mouseout', function() {
   $(".dropdown").removeClass( "is-active");
 })
 

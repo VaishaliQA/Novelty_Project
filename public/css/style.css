@@ -296,6 +296,7 @@ li {
 .status-are-reading:hover {
     color: #fff2cc;
     background-color: rgba(255,242,204, .5);
+    cursor: pointer;
 }
 
 .status-have-read {
@@ -306,6 +307,7 @@ li {
 .status-have-read:hover {
     color: #b6d7a8;
     background-color: rgba(182, 215, 168, .5);
+    cursor: pointer;
 }
 
 .dropdown-content {
