@@ -28,6 +28,12 @@ readStatus.on('click', function() {
   $(".dropdown").addClass( "is-active");
 })
 
+// Handle drop down mouseoff
+var readStatusDropdown = $('.dropdown-menu');
+readStatusDropdown.on('click', function() {
+  $(".dropdown").removeClass( "is-active");
+})
+
 // Handle dropdown coloring
 if (readStatus.val() === "You have not read this book.") {
     $(".dropdown").css("background-color", "red");
