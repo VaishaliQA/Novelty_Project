@@ -67,8 +67,18 @@ body {
 /* This is the main wrapper for all content */
 .main {
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
     height: 100%;
     justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
 }
 
 /* Used on the login page to hold the logo */
@@ -181,13 +191,15 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: fit-content;
+    min-height: 1200px;
 }
 
 .books-you-own,
 .books-you-borrow,
 .profile {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -213,7 +225,7 @@ body {
 .profile-info {
     background-color: var(--brand-orange);
     text-align: left;
-    height: 100vw;
+    height: 100%;
     padding: 10px;
 }
 
@@ -266,7 +278,8 @@ li {
 }
 
 @media (max-width: 1700px) {
-    .profile {
+    
+    .books-you-own {
         order: 1;
     }
 
@@ -274,7 +287,7 @@ li {
         order: 2;
     }
 
-    .books-you-own {
+    .profile {
         order: 3;
     }
 
@@ -300,6 +313,26 @@ li {
 
     .spacer-one {
         display: none;
+    }
+
+    .profile {
+        order: 1;
+    }
+
+    .books-you-own {
+        order: 2;
+    }
+
+    .login {
+        flex-direction: column;
+    }
+
+    .logo {
+        scale: .8;
+    }
+
+    .loginForm {
+        margin-top: -100px;
     }
 
 }
