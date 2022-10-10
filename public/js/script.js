@@ -1,3 +1,4 @@
+// Login page
 // Handle login
 var loginButton = $('.loginButton');
 loginButton.on('click', function() {
@@ -10,6 +11,7 @@ logOutButton.on('click', function() {
   window.location.replace("/public/index.html");
 })
 
+// Nav
 // Handle library
 var libraryTab = $('.yourLibraryButton');
 libraryTab.on('click', function() {
@@ -22,6 +24,7 @@ browseTab.on('click', function() {
   window.location.replace("/public/browse.html");
 })
 
+// Library
 // Handle drop down toggle
 var readStatus = $('.dropdown');
 readStatus.on('click', function() {
@@ -54,3 +57,19 @@ readStatusDropdownItem.on('mouseout', function() {
 if (readStatus.val() === "You have not read this book.") {
     $(".dropdown").css("background-color", "red");
 }
+
+// Steps
+var step_one = $('.step-one');
+step_one.on('click', function() {
+  window.location.replace("/public/library.html");
+})
+
+var step_two = $('.step-two');
+step_two.on('click', function() {
+  window.location.replace("/public/browse.html");
+})
+
+var step_three = $('.step-three');
+step_three.on('click', function() {
+  window.location.replace("/public/library.html");
+})
