@@ -1,0 +1,458 @@
+/* Global css */
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    --brand-orange: #f9cb9cff;
+    --brand-orange-hover: rgb(249, 211, 173);
+    --step-hover-bg: rgba(249, 211, 173, .5);
+}
+
+/* Cover the entire screen */
+html,
+body {
+    height: 100%;
+    background-color: black;
+}
+
+/* This is the wrapper for the logo, search, browse, your library, and logout options */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: bottom;
+    padding-top: 20px;
+}
+
+.nav > img {
+    max-width: 200px;
+}
+
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-self: center;
+    /* align-self: flex-end; */
+}
+
+.search-label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+.search-input {
+    margin-left: 10px;
+}
+
+.browseTab,
+.yourLibraryTab,
+.logoutTab {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 10px;
+    margin-bottom: -1px;
+}
+
+.browseButton,
+.yourLibraryButton,
+.logOutButton {
+    border: 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.logo {
+    background-color: var(--brand-orange);
+    margin-bottom: 10px;
+}
+
+/* This is the main wrapper for all content */
+.main {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Used on the login page to hold the logo */
+.left {
+    background-color: #f9cb9cff;
+    flex: 1 1 35%;
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Used on the login page to hold the login form */
+.right {
+    background-color: black;
+    flex: 1 1 65%;
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm {
+    width: 70%;
+
+}
+
+.input,
+.button {
+    width: 100%;
+}
+
+.button {
+    background-color: var(--brand-orange);
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: var(--brand-orange-hover);
+    font-weight: bold;
+}
+
+.label {
+    color: white;
+}
+
+/* Used on browse page to show steps */
+
+.browse,
+.library {
+    background-color: black;
+    border: 15px solid var(--brand-orange);
+    width: 100%;
+    height: fit-content;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0px 25px 25px 25px;
+}
+
+.steps {
+    display: flex;
+    height: fit-content;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.step {
+    background-color: black;
+    border: 2px solid white;
+    color: var(--brand-orange);
+    font-weight: bold;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.step:hover {
+    background-color: var(--brand-orange);
+    color: black;
+    cursor: pointer;
+}
+
+.num {
+    color: white;
+}
+
+.all-books {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.browse-book {
+    margin: 10px;
+    flex: 0 1 250px;
+}
+
+.browse-book-image {
+    width: 100%;
+}
+
+/* Begin Library CSS */
+
+.library {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: fit-content;
+    min-height: 1200px;
+}
+
+.books-you-own,
+.books-you-borrow,
+.profile {
+    width: 100%;
+    height: fit-content;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    flex: 1 1 500px;
+}
+
+.library-title {
+    border: 3px solid white;
+    padding: 10px;
+    margin: 25px 12px 25px 12px;
+}
+
+.profile {
+    margin-bottom: 10px;
+    color: black;
+}
+
+.profile-image {
+    background-color: white;
+    margin-top: 25px;
+}
+
+.profile-info {
+    background-color: var(--brand-orange);
+    text-align: left;
+    height: 100%;
+    padding: 10px;
+}
+
+.profile-info > h3 {
+    font-weight: bold;
+}
+
+.card {
+    background-color: black;
+    border: 2px solid white;
+}
+
+.card-header-title {
+    color: white;
+}
+
+.card-content {
+    color: white;
+    border-bottom: 2px solid white;
+    border-color: white;
+    display: flex;
+}
+
+.card-footer {
+    background-color: var(--brand-orange);
+    color: black;
+}
+
+.card-footer > a {
+    color: black;
+}
+
+.owned-book {
+    background-color: red;
+}
+
+.media-left {
+    float: left;
+}
+
+.spacer {
+    background-color: var(--brand-orange);
+    width: 5px;
+    margin: 10px;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+}
+
+/* Read status dropdown */
+.status-unread {
+    color: #ea9999;
+    background-color: black;
+}
+
+.status-unread:hover {
+    background-color: rgba(234,153,153, .5);
+    color: #ea9999;
+}
+
+.status-are-reading {
+    color: #fff2cc;
+    background-color: black;
+}
+
+.status-are-reading:hover {
+    color: #fff2cc;
+    background-color: rgba(255,242,204, .5);
+    cursor: pointer;
+}
+
+.status-have-read {
+    color: #b6d7a8;
+    background-color: black;
+}
+
+.status-have-read:hover {
+    color: #b6d7a8;
+    background-color: rgba(182, 215, 168, .5);
+    cursor: pointer;
+}
+
+.dropdown-content {
+    background-color: black;
+}
+
+/* Begin modal */
+.modal-content {
+    background-color: black;
+    width: fit-content;
+    height: fit-content;
+    min-height: 350px;
+    margin: auto;
+}
+
+.searchModal {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Used on the login page to hold the logo */
+.searchLeft {
+    background-color: #f9cb9cff;
+    flex: 1 1 35%;
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Used on the login page to hold the login form */
+.searchRight {
+    background-color: black;
+    flex: 1 1 65%;
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchForm {
+    width: 70%;
+}
+
+.addBookButton,
+.addBookButtonLibrary {
+    margin-bottom: 25px;
+}
+
+/* Begin mobile */
+
+@media (max-width: 1700px) {
+    
+    .books-you-own {
+        order: 1;
+    }
+
+    .spacer-one {
+        order: 2;
+    }
+
+    .profile {
+        order: 3;
+    }
+
+    .spacer-two {
+        order: 4;
+    }
+
+    .books-you-borrow {
+        order: 5;
+    }
+
+}
+
+@media (max-width: 1660px) {
+
+    .spacer-two {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1150px) {
+
+    .spacer-one {
+        display: none;
+    }
+
+    .profile {
+        order: 1;
+    }
+
+    .books-you-own {
+        order: 2;
+    }
+
+    .login {
+        flex-direction: column;
+    }
+
+    .logo {
+        scale: .8;
+    }
+
+    .loginForm {
+        margin-top: -100px;
+    }
+
+    .searchModal {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .isbn-field {
+        margin-top: 25px;
+    } 
+    
+    /* Used on the login page to hold the logo */
+    /* .searchLeft {
+        background-color: #f9cb9cff;
+        flex: 1 1 35%;
+        display: flex;
+        flex: column;
+        align-items: center;
+        justify-content: center;
+    }
+     */
+    /* Used on the login page to hold the login form */
+    /* .searchRight {
+        background-color: black;
+        flex: 1 1 65%;
+        display: flex;
+        flex: column;
+        align-items: center;
+        justify-content: center;
+    } */
+
+}
