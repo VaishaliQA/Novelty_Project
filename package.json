@@ -12,8 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@fortawesome/fontawesome-free": "^6.2.0",
+<<<<<<< HEAD
     "axios": "^1.1.2",
+=======
+=======
+    "@sendgrid/mail": "^7.7.0",
+>>>>>>> fca9735 (package.json added for tracking)
+>>>>>>> 022565b (package.json added for tracking)
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
