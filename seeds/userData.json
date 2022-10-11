@@ -1,0 +1,33 @@
+[
+  {
+    "email": "macgreene@hotmail.com",
+    "first_name": "Mac",
+    "last_name": "Greene",
+    "location": "Asheville"
+  },
+  {
+    "email": "inshasayanie@hotmail.com",
+    "first_name": "Insha",
+    "last_name": "Sayani",
+    "location": "Atlanta"
+  },
+  {
+    "email": "vaishali@hotmail.com",
+    "first_name": "Vaishali",
+    "last_name": "Patel",
+    "location": "Malibu"
+  },
+  {
+    "email": "mikemartens@hotmail.com",
+    "first_name": "Mike",
+    "last_name": "Martens",
+    "location": "Atlanta"
+  },
+  {
+    "email": "jonshogren@hotmail.com",
+    "first_name": "Jonathan",
+    "last_name": "Shogren",
+    "location": "Atlanta"
+  }
+]
+
