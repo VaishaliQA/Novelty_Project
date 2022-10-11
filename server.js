@@ -4,6 +4,8 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
 const path = require("path");
+// Import DB connection
+const sequelize = require("./config/connection");
 
 // Sets up the Express App
 const app = express();
@@ -15,7 +17,24 @@ app.set("view engine", "handlebars");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers/api/"));
 
-// Starts the server to begin listening
-app.listen(PORT, () => {
-  console.log("Server listening on: http://localhost:" + PORT);
+// ----- TEST ROUTE START
+// const { Book, User } = require("./models");
+// app.get("/api", async (req, res) => {
+//   try {
+//     // Get all users, sorted by name
+//     const bookData = await Book.findAll({
+//       include: [{ all: true, nested: true }],
+//     });
+//     res.status(200).json(bookData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+// ----- TEST ROUTE END
+
+// sync sequelize models to the database, then turn on the server and start listening
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
 });

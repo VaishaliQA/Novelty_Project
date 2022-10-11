@@ -1,11 +1,10 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Book = require("./Book");
 
 // Initialize User model (table) by extending off Sequelize's Model class
-class User extends Model {}
+class Book extends Model {}
 
-User.init(
+Book.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,24 +12,39 @@ User.init(
       autoIncrement: true,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.CHAR,
-      allowNull: false,
-      unique: true,
-      validate: { isEmail: true },
-    },
-    first_name: {
+    isbn: {
       type: DataTypes.CHAR,
       allowNull: false,
     },
-    last_name: {
+    title: {
       type: DataTypes.CHAR,
       allowNull: false,
     },
-    // todo consider dropping location from mvp
-    location: {
+    authors: {
       type: DataTypes.CHAR,
       allowNull: true,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    categories: {
+      type: DataTypes.CHAR,
+      allowNull: true,
+    },
+    owner_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: "user", key: "id" },
+    },
+    borrower_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: { model: "user", key: "id" },
+    },
+    availability: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
   },
   {
@@ -38,7 +52,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "book",
   }
 );
-module.exports = User;
+module.exports = Book;

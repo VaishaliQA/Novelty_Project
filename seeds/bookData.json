@@ -1,0 +1,13 @@
+[
+  {
+    "isbn": "9781604698374",
+    "title": "Mushrooms of the Southeast",
+    "authors": "Todd F. Elliott, Steven L. Stephenson",
+    "description":
+      "PLACEHOLDER DESCRIPTION",
+    "categories": "Nature",
+    "owner_id": 1,
+    "borrower_id": 2,
+    "availability": true
+  }
+]
