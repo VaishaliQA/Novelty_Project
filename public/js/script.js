@@ -2,26 +2,27 @@
 // Handle login
 var loginButton = $('.loginButton');
 loginButton.on('click', function() {
-  window.location.replace("/public/browse.html");
+  window.location.replace("/browse");
 })
 
 // Handle logout
 var logOutButton = $('.logOutButton');
 logOutButton.on('click', function() {
-  window.location.replace("/public/index.html");
+  window.location.replace("/");
 })
 
 // Nav
 // Handle library
 var libraryTab = $('.yourLibraryButton');
 libraryTab.on('click', function() {
-  window.location.replace("/public/library.html");
+  window.location.replace("/library");
 })
 
+// Browse
 // Handle browse
 var browseTab = $('.browseButton');
 browseTab.on('click', function() {
-  window.location.replace("/public/browse.html");
+  window.location.replace("/browse");
 })
 
 // Library

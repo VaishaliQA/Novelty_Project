@@ -191,6 +191,11 @@ body {
     width: 100%;
 }
 
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
 /* Begin Library CSS */
 
 .library {
