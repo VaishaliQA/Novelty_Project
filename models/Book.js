@@ -32,6 +32,10 @@ Book.init(
       type: DataTypes.CHAR,
       allowNull: true,
     },
+    thumbnail_url: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     owner_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
