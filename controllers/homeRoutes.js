@@ -2,12 +2,14 @@ const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+// Temporary re-route to browse page for testing
+router.get("/", (req, res) => {
   res.render("browsepage");
 });
 
+// Change /login back to /
 // find all users and map data.
-router.get("/", withAuth, async (req, res) => {
+router.get("/login", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ["password"] },
