@@ -12,7 +12,7 @@ Book.init(
       autoIncrement: true,
       allowNull: false,
     },
-    isbn: {
+    isbn13: {
       type: DataTypes.CHAR,
       allowNull: false,
     },
@@ -24,12 +24,20 @@ Book.init(
       type: DataTypes.CHAR,
       allowNull: true,
     },
+    published_date: {
+      type: DataTypes.CHAR,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
     categories: {
       type: DataTypes.CHAR,
+      allowNull: true,
+    },
+    thumbnail_url: {
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     owner_id: {
@@ -42,7 +50,7 @@ Book.init(
       allowNull: true,
       references: { model: "user", key: "id" },
     },
-    availability: {
+    available: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },

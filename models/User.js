@@ -3,7 +3,11 @@ const sequelize = require("../config/connection");
 const Book = require("./Book");
 
 // Initialize User model (table) by extending off Sequelize's Model class
-class User extends Model {}
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 User.init(
   {
@@ -34,13 +38,29 @@ User.init(
       type: DataTypes.CHAR,
       allowNull: false,
     },
-    // todo consider dropping location from mvp
     location: {
       type: DataTypes.CHAR,
       allowNull: true,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+      },
+    },
   },
   {
+    hooks: {
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
