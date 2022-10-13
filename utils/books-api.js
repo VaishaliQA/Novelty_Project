@@ -1,33 +1,43 @@
 const axios = require("axios");
 
 // google api call for fetching book information using ISBN as identifier
-const fetchBookInfo = async function (ISBN) {
+const fetchBookInfo = async function (isbn_search) {
   try {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${ISBN}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn_search}`;
     const res = await axios.get(url);
 
-    // access first entry of response, parse into relevent fields
+    // access first entry of response
     const bookData = res.data.items[0];
 
+    // parse response
+    const isbnList = bookData.volumeInfo.industryIdentifiers;
     const title = bookData.volumeInfo.title;
     const authors = bookData.volumeInfo.authors;
     const publishedDate = bookData.volumeInfo.publishedDate;
     const description = bookData.volumeInfo.description;
-    const isbn_13 =
-      bookData.volumeInfo.industryIdentifiers[0].industryIdentifiers;
+    const categories = bookData.volumeInfo.categories;
     const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
-    const buyLink = bookData.saleInfo.buyLink;
 
+    // grab 13 digit ISBN from array
+    let isbn13 = "";
+    isbnList.forEach((obj) => {
+      if (obj.type === "ISBN_13") {
+        isbn13 = obj.identifier;
+      }
+    });
+
+    // structure response into object
     const obj = {
+      isbn13: isbn13,
       title: title,
       authors: authors,
       publishedDate: publishedDate,
       description: description,
-      isbn_13: isbn_13,
+      categories: categories,
       imageLink: imageLink,
-      buyLink: buyLink,
     };
 
+    // return response as stringified object
     return JSON.stringify(obj);
   } catch (err) {
     console.log(err);
@@ -36,6 +46,6 @@ const fetchBookInfo = async function (ISBN) {
 module.exports = fetchBookInfo;
 
 // sample usage of function
-// fetchBookInfo(9780826501028).then((data) => {
+// fetchBookInfo(9781936594115).then((data) => {
 //   console.log(JSON.parse(data));
 // });
