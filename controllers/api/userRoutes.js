@@ -1,35 +1,49 @@
-// Router import and empty {} for when Models are set up
+// Router and Model import
 const router = require('express').Router();
-const {} = require('../models');
+const {User, Book} = require('../models');
 
-// GET route for homepage (explore)
+// GET all users
+// localhost:3001/api/users/
 router.get('/', async (req, res) => {
-    res.render('all');
+    res.render('loginpage');
 });
 
-// GET route by book
-router.get('/book', async (req, res) => {
+// GET one user
+// localhost:3001/api/users/:id
+router.get('/:id' , async(req, res) => {
+
+});
+
+// POST new user
+// localhost:3001/api/users/
+router.post('/', async (req, res) => {
     
 });
 
-// GET route by user
-router.get('/user', async (req, res) => {
-    
+// PUT user (update info)
+// localhost:3001/api/users/:id
+router.put('/:id' , async(req, res) => {
+
 });
 
-// GET route by status
-router.get('/status', async (req, res) => {
-    
+// DELETE user by id
+// localhost:3001/api/users/:id
+router.delete('/:id' , async(req, res) => {
+
 });
 
-// POST route to create book
-router.post('/create', async (req, res) => {
-    
+// ----- SESSION ROUTES ----- 
+
+// Check req creds and create session
+// localhost:3001/api/users/login
+router.post('/login' , async(req, res) => {
+
 });
 
-// PUT route to change status
-router.put('/status', async (req, res) => {
-    
+// Destroy session
+// localhost:3001/api/users/logout
+router.post('/logout' , async(req, res) => {
+
 });
 
 module.exports = router;
