@@ -1,13 +1,63 @@
 [
-  {
-    "isbn": "9781604698374",
-    "title": "Mushrooms of the Southeast",
-    "authors": "Todd F. Elliott, Steven L. Stephenson",
-    "description":
-      "PLACEHOLDER DESCRIPTION",
-    "categories": "Nature",
-    "owner_id": 1,
-    "borrower_id": 2,
-    "availability": true
-  }
+{
+  "isbn13": 9780441172719,
+  "title": "Dune",
+  "authors": "[ 'Frank Herbert' ]",
+  "publishedDate":"1990-09-01",
+  "description": "NOW A MAJOR MOTION PICTURE directed by Denis Villeneuve, starring Timothée Chalamet, Zendaya, Jason Momoa, Rebecca Ferguson, Oscar Isaac, Josh Brolin, Stellan Skarsgård, Dave Bautista, David Dastmalchian, Stephen McKinley Henderson, Chang Chen, Sharon Duncan-Brewster, Charlotte Rampling, and Javier Bardem. Frank Herbert’s classic masterpiece—a triumph of the imagination and one of the bestselling science fiction novels of all time. Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for.... When House Atreides is betrayed, the destruction of Paul’s family will set the boy on a journey toward a destiny greater than he could ever have imagined. And as he evolves into the mysterious man known as Muad’Dib, he will bring to fruition humankind’s most ancient and unattainable dream. A stunning blend of adventure and mysticism, environmentalism and politics, Dune won the first Nebula Award, shared the Hugo Award, and formed the basis of what is undoubtedly the grandest epic in science fiction.",
+  "categories": "[ 'Fiction' ]",
+  "imageLink": "http://books.google.com/books/content?id=nrRKDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+  "owner_id": 4,
+  "borrower_id": 2,
+  "available": false
+},
+{
+  "isbn13": 9780440237686,
+  "title": "The Giver",
+  "authors": "[ 'Lois Lowry' ]",
+  "publishedDate": "2002",
+  "description": "Given his lifetime assignment at the Ceremony of Twelve, Jonas becomes the receiver of memories shared by only one other in his community and discovers the terrible truth about the society in which he lives.",
+  "categories": "[ 'Juvenile Fiction' ]",
+  "imageLink": "http://books.google.com/books/content?id=M6SwUjgBoy8C&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+  "owner_id": 2,
+  "borrower_id": 3,
+  "available": false
+},
+{
+  "isbn13": 9781476733951,
+  "title": "Wool",
+  "authors": "[ 'Hugh Howey' ]",
+  "publishedDate": "2013-03-12",
+  "description": "In a future toxic landscape, a community that lives in an underground silo is rocked by the desire of Sheriff Holston, who has upheld the group's rules for years, to go outside, setting in motion events that kindle the fire of revolution.",
+  "categories": "[ 'Fiction' ]",
+  "imageLink": "http://books.google.com/books/content?id=oCpYuc1dfPAC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+  "owner_id": 5,
+  "borrower_id": 4,
+  "available": false
+},
+{
+  "isbn13": 9781577314806,
+  "title": "The Power of Now",
+  "authors": "[ 'Eckhart Tolle' ]",
+  "publishedDate": "2004",
+  "description": "The author shares the secret of his own self-realization and the philosophy for living in the present he has developed.",
+  "categories": "[ 'Body, Mind & Spirit' ]",
+  "imageLink": "http://books.google.com/books/content?id=NFQ7DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+  "owner_id": 1,
+  "borrower_id": null,
+  "available": true
+}, 
+{
+  "isbn13": 9781936594115,
+  "title": "The Time Machine",
+  "authors": "[ 'H. G. Wells' ]",
+  "published_date": "2011-06-27",
+  "description": "H.G. Wells best-selling classic THE TIME MACHINE",
+  "categories": "[ 'Fiction' ]",
+  "thumbnail_url": "http://books.google.com/books/content?id=XOcDTwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+  "owner_id": 3,
+  "borrower_id": null,
+  "available": true
+}
 ]
+

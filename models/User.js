@@ -27,7 +27,6 @@ User.init(
       type: DataTypes.CHAR,
       allowNull: false,
     },
-    // todo consider dropping location from mvp
     location: {
       type: DataTypes.CHAR,
       allowNull: true,
