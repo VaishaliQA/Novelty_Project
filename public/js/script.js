@@ -25,6 +25,12 @@ browseTab.on('click', function() {
   window.location.replace("/browse");
 })
 
+// Handle book click
+var book_book = $('.browse-book');
+book_book.on('click', function() {
+  openSearchModal();;
+})
+
 // Library
 // Handle drop down toggle
 var readStatus = $('.dropdown');
@@ -102,3 +108,8 @@ close_modal_x.on('click', function() {
 addBookButtonLibrary.on('click', function() {
   openSearchModal();
 })
+
+// Launch browse book modal
+function openBrowseModal() {
+  browseModal.addClass("is-active");
+}
