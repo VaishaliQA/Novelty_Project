@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User, Book } = require("../models");
 const withAuth = require("../utils/auth");
 
 // Temporary re-route to browse page for testing
@@ -25,6 +25,22 @@ router.get("/login", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// GET a book
+router.get("/:id", (req, res) => {
+  // Get one book from the book table
+  Book.findOne(
+    {
+      // Gets the book based on the id given in the request parameters
+      where: { 
+        id: req.params.id 
+      },
+    }
+  ).then((bookData) => {
+    res.json(bookData);
+    console.log(bookData);
+  });
 });
 
 // Redirect to login route
