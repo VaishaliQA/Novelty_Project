@@ -10,11 +10,11 @@
   <section class="right">
 
     <!-- Begin login form -->
-    <section class="loginForm">
+    <form class="loginForm">
 
       <!-- Email field -->
       <section class="field">
-        <label class="label">Email</label>
+        <label class="label" for="email-login">Email</label>
         <p class="control has-icons-left has-icons-right">
           <input
             class="input"
@@ -33,7 +33,7 @@
 
       <!-- Password field -->
       <section class="field">
-        <label class="label">Password</label>
+        <label class="label" for="password-login">Password</label>
         <p class="control has-icons-left">
           <input
             class="input"
@@ -50,8 +50,9 @@
       <!-- Login button -->
       <button class="button is-normal loginButton" type="submit">Login</button>
 
-    </section>
+    </form>
   </section>
 </section>
 
+{{!  Access login file from js folder }}
 <script src="/js/login.js"></script>

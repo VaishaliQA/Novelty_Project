@@ -1,33 +1,37 @@
 [
   {
     "email": "macgreene@hotmail.com",
+    "password": "mac12345",
     "first_name": "Mac",
     "last_name": "Greene",
     "location": "Asheville"
   },
   {
     "email": "inshasayani@hotmail.com",
+    "password": "insha12345",
     "first_name": "Insha",
     "last_name": "Sayani",
     "location": "Atlanta"
   },
   {
     "email": "vaishalipatel@hotmail.com",
+    "password": "vaish12345",
     "first_name": "Vaishali",
     "last_name": "Patel",
     "location": "Malibu"
   },
   {
     "email": "mikemartens@hotmail.com",
+    "password": "mike12345",
     "first_name": "Mike",
     "last_name": "Martens",
     "location": "Atlanta"
   },
   {
     "email": "jonshogren@hotmail.com",
+    "password": "jon12345",
     "first_name": "Jonathan",
     "last_name": "Shogren",
     "location": "Atlanta"
   }
 ]
-
