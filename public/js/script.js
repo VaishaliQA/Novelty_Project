@@ -26,9 +26,9 @@ browseTab.on('click', function() {
 })
 
 // Handle book click
-var book_book = $('.browse-book');
-book_book.on('click', function() {
-  openSearchModal();;
+var browse_book = $('.browse-book');
+browse_book.on('click', function() {
+  openBrowseModal();;
 })
 
 // Library
@@ -83,6 +83,7 @@ step_three.on('click', function() {
 
 // Modal
 var searchModal = $('.add-book-modal');
+var browseModal = $('.browse-book-modal');
 var addBookButton = $('.addBookButton');
 var addBookButtonLibrary = $('.addBookButtonLibrary');
 var close_modal_x = $('.modal-close');

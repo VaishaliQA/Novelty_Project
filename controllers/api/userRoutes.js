@@ -1,16 +1,49 @@
-const router = require("express").Router();
-// Add a comment describing the purpose of the 'get' route
-// GET route for getting all of the dishes that are on the menu
-router.get("/", (req, res) => {
-  res.render("loginpage");
+// Router and Model import
+const router = require('express').Router();
+const {User, Book} = require('../models');
+
+// GET all users
+// localhost:3001/api/users/
+router.get('/', async (req, res) => {
+    res.render('loginpage');
 });
 
-router.get("/browse", (req, res) => {
-    res.render("browsepage");
+// GET one user
+// localhost:3001/api/users/:id
+router.get('/:id' , async(req, res) => {
+
 });
 
-router.get("/library", (req, res) => {
-    res.render("librarypage");
+// POST new user
+// localhost:3001/api/users/
+router.post('/', async (req, res) => {
+    
+});
+
+// PUT user (update info)
+// localhost:3001/api/users/:id
+router.put('/:id' , async(req, res) => {
+
+});
+
+// DELETE user by id
+// localhost:3001/api/users/:id
+router.delete('/:id' , async(req, res) => {
+
+});
+
+// ----- SESSION ROUTES ----- 
+
+// Check req creds and create session
+// localhost:3001/api/users/login
+router.post('/login' , async(req, res) => {
+
+});
+
+// Destroy session
+// localhost:3001/api/users/logout
+router.post('/logout' , async(req, res) => {
+
 });
 
 module.exports = router;
