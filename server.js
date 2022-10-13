@@ -15,12 +15,9 @@ const PORT = process.env.PORT || 3001;
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.use(express.static(path.join(__dirname, "public")));
-<<<<<<< HEAD
 app.use(require("./controllers/api/userRoutes.js"));
-=======
 app.use(require("./controllers/api/"));
-app.use(require("./controllers/api/email-routes.js"));
->>>>>>> 303defe (email route created and tested)
+app.use(require("./controllers/api/emailRoutes.js"));
 
 // ----- TEST ROUTE START
 // const { Book, User } = require("./models");
