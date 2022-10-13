@@ -2,6 +2,10 @@ const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
 
+router.get("/", async (req, res) => {
+  res.render("browsepage");
+});
+
 // find all users and map data.
 router.get("/", withAuth, async (req, res) => {
   try {
