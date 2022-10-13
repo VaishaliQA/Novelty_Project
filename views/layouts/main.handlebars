@@ -17,16 +17,20 @@
   </head>
   <body>
     <header>
-        {{!-- {{#if loggedIn}} --}}
+        {{#if logged_in}}
         {{> common-header}}
-        {{!-- {{else}} --}}
-         {{!-- Dispaly Error Message and allow user to re-login with correct credential --}}
-        {{!-- {{/if}} --}}
+        {{else}} 
+         {{!-- Dispaly Error Message and allow user to re-login with correct credential --}}  
+        {{/if}} 
     </header>
     <main class="main">
       {{{body}}}
     </main>
-
+    <footer>
+      {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+    </footer>
     <script
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
