@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
 
+// find all users and map data.
 router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -20,6 +21,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+// Redirect to login route
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");

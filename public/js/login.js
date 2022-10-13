@@ -1,3 +1,4 @@
+// This method is called when user click on login button
 const loginFormHandler = async (event) => {
   event.preventDefault();
 

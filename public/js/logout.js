@@ -1,3 +1,4 @@
+// This method is called when user click on logout button
 const logout = async () => {
   const response = await fetch("/api/users/logout", {
     method: "POST",
