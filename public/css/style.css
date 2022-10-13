@@ -163,7 +163,8 @@ body {
     margin-bottom: 25px;
 }
 
-.step:hover {
+.step:hover,
+.browse-book:hover {
     background-color: var(--brand-orange);
     color: black;
     cursor: pointer;
@@ -190,6 +191,11 @@ body {
 .browse-book-image {
     width: 100%;
 }
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
 
 /* Begin Library CSS */
 
@@ -329,7 +335,8 @@ li {
     margin: auto;
 }
 
-.searchModal {
+.searchModal,
+.browseModal {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -338,7 +345,8 @@ li {
 }
 
 /* Used on the login page to hold the logo */
-.searchLeft {
+.searchLeft,
+.browseLeft {
     background-color: #f9cb9cff;
     flex: 1 1 35%;
     display: flex;
@@ -348,7 +356,8 @@ li {
 }
 
 /* Used on the login page to hold the login form */
-.searchRight {
+.searchRight,
+.browseRight {
     background-color: black;
     flex: 1 1 65%;
     display: flex;
@@ -361,8 +370,13 @@ li {
     width: 70%;
 }
 
+.browse-info {
+    color: white;
+}
+
 .addBookButton,
-.addBookButtonLibrary {
+.addBookButtonLibrary,
+.borrow-book-button {
     margin-bottom: 25px;
 }
 

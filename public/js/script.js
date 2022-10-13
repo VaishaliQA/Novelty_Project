@@ -2,26 +2,33 @@
 // Handle login
 var loginButton = $('.loginButton');
 loginButton.on('click', function() {
-  window.location.replace("/public/browse.html");
+  window.location.replace("/browse");
 })
 
 // Handle logout
 var logOutButton = $('.logOutButton');
 logOutButton.on('click', function() {
-  window.location.replace("/public/index.html");
+  window.location.replace("/");
 })
 
 // Nav
 // Handle library
 var libraryTab = $('.yourLibraryButton');
 libraryTab.on('click', function() {
-  window.location.replace("/public/library.html");
+  window.location.replace("/library");
 })
 
+// Browse
 // Handle browse
 var browseTab = $('.browseButton');
 browseTab.on('click', function() {
-  window.location.replace("/public/browse.html");
+  window.location.replace("/browse");
+})
+
+// Handle book click
+var browse_book = $('.browse-book');
+browse_book.on('click', function() {
+  openBrowseModal();;
 })
 
 // Library
@@ -76,9 +83,12 @@ step_three.on('click', function() {
 
 // Modal
 var searchModal = $('.add-book-modal');
+var browseModal = $('.browse-book-modal');
 var addBookButton = $('.addBookButton');
 var addBookButtonLibrary = $('.addBookButtonLibrary');
+var borrowBookButton = $('.borrow-book-button');
 var close_modal_x = $('.modal-close');
+var close_borrow_modal = $('.borrow-modal-close');
 
 // Launch search modal on click
 function openSearchModal() {
@@ -100,4 +110,22 @@ close_modal_x.on('click', function() {
 
 addBookButtonLibrary.on('click', function() {
   openSearchModal();
+})
+
+// Launch browse book modal
+function openBrowseModal() {
+  browseModal.addClass("is-active");
+}
+
+// Hide browse book modal on Add Book click
+function closeBrowseModal() {
+  browseModal.removeClass("is-active");
+}
+
+borrowBookButton.on('click', function() {
+  closeBrowseModal();
+})
+
+close_borrow_modal.on('click', function() {
+  closeBrowseModal();
 })

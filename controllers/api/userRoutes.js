@@ -1,6 +1,6 @@
 // Router and Model import
 const router = require('express').Router();
-const {User, Book} = require('../models');
+// const {User, Book} = require('../models');
 
 // GET all users
 // localhost:3001/api/users/
