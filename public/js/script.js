@@ -86,7 +86,9 @@ var searchModal = $('.add-book-modal');
 var browseModal = $('.browse-book-modal');
 var addBookButton = $('.addBookButton');
 var addBookButtonLibrary = $('.addBookButtonLibrary');
+var borrowBookButton = $('.borrow-book-button');
 var close_modal_x = $('.modal-close');
+var close_borrow_modal = $('.borrow-modal-close');
 
 // Launch search modal on click
 function openSearchModal() {
@@ -114,3 +116,16 @@ addBookButtonLibrary.on('click', function() {
 function openBrowseModal() {
   browseModal.addClass("is-active");
 }
+
+// Hide browse book modal on Add Book click
+function closeBrowseModal() {
+  browseModal.removeClass("is-active");
+}
+
+borrowBookButton.on('click', function() {
+  closeBrowseModal();
+})
+
+close_borrow_modal.on('click', function() {
+  closeBrowseModal();
+})

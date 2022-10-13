@@ -1,11 +1,16 @@
 // Router and Model import
 const router = require('express').Router();
-const {User, Book} = require('../models');
+// const {User, Book} = require('../../models');
+
+// Handle browse and library pages
+router.get('/browse', async (req, res) => {
+    res.render('browsepage');
+});
 
 // GET all users
 // localhost:3001/api/users/
-router.get('/', async (req, res) => {
-    res.render('loginpage');
+router.get('/library', async (req, res) => {
+    res.render('librarypage');
 });
 
 // GET one user
