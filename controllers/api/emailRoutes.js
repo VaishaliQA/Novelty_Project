@@ -9,7 +9,7 @@ router.get('/api/email/:id', (req, res) => {
         where: {
           isbn: req.params.id
         },
-        attributes: ['id', 'isbn', 'title', 'availability'],
+        attributes: ['id', 'isbn13', 'title', 'available'],
       }
     ).then(book =>{
       if(!book){
