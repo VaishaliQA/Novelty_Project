@@ -11,7 +11,12 @@ const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log("\n----- DATABASE SYNCED -----\n");
 
-    await User.bulkCreate(userData);
+    await User.bulkCreate(userData, {
+      // set hooks property
+      individualHooks: true,
+      returning: true,
+    });
+
     console.log("\n----- USERS SEEDED -----\n");
 
     await Book.bulkCreate(bookData);

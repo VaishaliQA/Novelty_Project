@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Book = require("./Book");
+const bcrypt = require("bcrypt"); // for password hashing
 
 // Initialize User model (table) by extending off Sequelize's Model class
 class User extends Model {
@@ -44,17 +44,28 @@ User.init(
     },
   },
   {
+    // created hooks for hash password
     hooks: {
       beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+        try {
+          newUserData.password = await bcrypt.hash(newUserData.password, 10);
+          return newUserData;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
-        return updatedUserData;
+        try {
+          updatedUserData.password = await bcrypt.hash(
+            updatedUserData.password,
+            10
+          );
+          return updatedUserData;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
     },
     sequelize,
