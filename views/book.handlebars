@@ -1,0 +1,13 @@
+{{! Partial for browse book modal }}
+{{!-- {{#each book}} --}}
+<ul>
+  <li class="browse-book-title">Title: {{book.title}}</li>
+  <li class="browse-book-title">Description: {{book.description}}</li>
+  <li class="browse-book-title">Authors: {{book.authors}}</li>
+  <li class="browse-book-title">Categories: {{book.categories}}</li>
+  <li class="browse-book-title">Owned By: {{book.owner.first_name}} {{book.owner.last_name}}</li>
+  <li class="browse-book-title">Status: {{book.available}}</li>
+</ul>
+{{!-- {{/each}} --}}
+<p>
+<button class="button is-normal borrow-book-button">Borrow Book</button>
