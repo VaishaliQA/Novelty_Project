@@ -192,6 +192,10 @@ body {
     width: 100%;
 }
 
+.browse-book-title {
+    color: white;
+}
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;

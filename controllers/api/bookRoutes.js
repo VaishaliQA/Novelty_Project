@@ -10,7 +10,21 @@ router.get("/", async (req, res) => {
 
 // GET one book
 // localhost:3001/api/books/:id
-router.get("/:id", async (req, res) => {});
+router.get("/:id", async (req, res) => {
+  try{ 
+    const bookData = await Book.findByPk(req.params.id, { include: [{model: User, as:"owner"}] });
+    if(!bookData) {
+        res.status(404).json({message: 'No book with this id!'});
+        return;
+    }
+    const book = bookData.get({ plain: true });
+    console.log("book", book);
+    res.json(book);
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+  };  
+});
 
 // POST new book
 // localhost:3001/api/books/
