@@ -2,22 +2,6 @@ const router = require("express").Router();
 const { User, Book } = require("../models");
 const withAuth = require("../utils/auth");
 
-// Temp DB
-const db = [
-  {
-    "id": "1",
-    "isbn": "123456",
-    "title": "title",
-    "author": "author",
-    "description": "description",
-    "image_link": "image link",
-    "categories": "categories",
-    "owner_id": "1",
-    "borrower_id": "1",
-    "availability": "availability"
-}
-];
-
 // Temporary re-route to browse page for testing
 router.get("/", (req, res) => {
   res.render("browsepage");
@@ -43,33 +27,21 @@ router.get("/login", withAuth, async (req, res) => {
   }
 });
 
-// GET a book
+// GET a book by ID (Using in Modal Handlebars)
 router.get('/:id', async (req, res) => {
   try{ 
-      // const bookData = await Book.findByPk(req.params.id);
-      // const bookData = await Book.findOne({
-      //   where: {
-      //     id: req.params.id,
-      //   },
-      //   include: [User],
-      // });
       const bookData = await Book.findByPk(req.params.id, { include: [{model: User, as:"owner"}] });
-      // console.log("BOOK DATA 1", bookData);
       if(!bookData) {
           res.status(404).json({message: 'No book with this id!'});
           return;
       }
-      // res.json(bookData);
       const book = bookData.get({ plain: true });
-      // console.log("BOOK DATA 2", book);
       res.render('book', { book });
-      // res.render('book', book);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     };     
 });
-
 
 // Redirect to login route
 router.get("/login", (req, res) => {
