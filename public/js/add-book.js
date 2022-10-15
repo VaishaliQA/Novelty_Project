@@ -1,25 +1,23 @@
-
-// Modal
-var searchModal = $(".add-book-modal");
+var searchModal = document.getElementById("add-book-modal");
 var addBookButton = document.getElementById("add-book-button");
-var addBookButtonLibrary = $(".addBookButtonLibrary");
-var close_add_modal = $(".add-modal-close");
+var addBookButtonLibrary = document.getElementById("add-book-button-library");
+var close_add_modal = document.getElementById("add-modal-close");
 
 // Launch search modal on click
 function openSearchModal() {
-    searchModal.addClass("is-active");
+    searchModal.classList.add("is-active");
   }
   
   // Hide search modal on Add Book click
   function closeSearchModal() {
-    searchModal.removeClass("is-active");
+    searchModal.classList.remove("is-active");
   }
   
-  close_add_modal.on("click", function () {
+  close_add_modal.addEventListener("click", function () {
     closeSearchModal();
   });
   
-  addBookButtonLibrary.on("click", function () {
+  addBookButtonLibrary.addEventListener("click", function () {
     openSearchModal();
   });
 
@@ -68,15 +66,15 @@ async function searchBook(isbnInput) {
         };
   
         // Show object on screen
-        const searchedBookInfo = $(".searched-book-info");
-        const bookAddedMessage = $(".book-added-message");
-        searchedBookInfo.html(`
+        const searchedBookInfo = document.getElementById("add-book-modal");
+        const bookAddedMessage = document.getElementById("book-added-message");
+        searchedBookInfo.innerHtml = `
         <ul>
           <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
           <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description.slice(0, 500)}...[Read More]</li>
           <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
         </ul>
-      `);
+      `;
       // Activate Add Book button
       addBookButton.classList.remove("Disabled");
   
@@ -100,7 +98,7 @@ async function searchBook(isbnInput) {
       const isbnInput = document.getElementById("isbn-input").value;
       searchBook(isbnInput);
       // Reset book added message
-      const bookAddedMessage = $(".book-added-message");
-      bookAddedMessage.html(``);
+      const bookAddedMessage = document.getElementById("book-added-message");
+      bookAddedMessage.innerHTML = ``;
     }
   );
