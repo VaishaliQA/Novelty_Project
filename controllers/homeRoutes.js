@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User, Book } = require("../models");
 const withAuth = require("../utils/auth");
 
 // find all users and map data.
@@ -7,7 +7,7 @@ router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ["password"] },
-      order: [["name", "ASC"]],
+      order: [["first_name", "ASC"]],
     });
 
     const users = userData.map((project) => project.get({ plain: true }));
@@ -19,6 +19,11 @@ router.get("/", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// GET a book by ID
+router.get('/:id', async (req, res) => {
+     
 });
 
 // Redirect to login route

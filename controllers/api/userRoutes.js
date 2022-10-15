@@ -1,6 +1,7 @@
 // Router and Model import
 const router = require("express").Router();
 const { User, Book } = require("../../models");
+const bcrypt = require("bcrypt");
 
 // GET all users
 // localhost:3001/api/users/
@@ -85,7 +86,7 @@ router.delete("/:id", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
-
+    console.log("email :", req.body.email);
     if (!userData) {
       res
         .status(400)
@@ -93,7 +94,11 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    // compare bcrypt password
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      userData.password
+    );
 
     if (!validPassword) {
       res
@@ -109,6 +114,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
+    console.log("error: ", err);
     res.status(400).json(err);
   }
 });
