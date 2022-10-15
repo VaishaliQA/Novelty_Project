@@ -2,12 +2,6 @@ const router = require("express").Router();
 const { User, Book } = require("../models");
 const withAuth = require("../utils/auth");
 
-// GET all users
-// localhost:3001/api/users/
-router.get('/', async (req, res) => {
-  res.render('librarypage');
-});
-
 // find all users and map data.
 router.get("/", withAuth, async (req, res) => {
   try {
