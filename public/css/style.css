@@ -197,6 +197,9 @@ body {
     color: white;
 }
 
+.search-book-result {
+    margin-bottom: 10px;
+}
 .search-book-result-title {
     font-weight: bold;
 }

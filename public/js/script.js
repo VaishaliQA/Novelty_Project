@@ -151,7 +151,7 @@ async function searchBook(isbnInput) {
       const title = bookData.volumeInfo.title;
       const authors = bookData.volumeInfo.authors;
       const publishedDate = bookData.volumeInfo.publishedDate;
-      const description = bookData.volumeInfo.description;
+      const description = bookData.volumeInfo.description.slice(0, 500) + "...[Read More]"; // Show the first 500 characters
       const categories = bookData.volumeInfo.categories;
       const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
 
