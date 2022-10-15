@@ -176,6 +176,8 @@ async function searchBook() {
 
       console.log(obj);
 
+      // Show object on screen
+
       // return response as stringified object
       return JSON.stringify(obj);
     })

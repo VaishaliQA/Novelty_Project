@@ -374,6 +374,10 @@ li {
     width: 70%;
 }
 
+.searched-book-info {
+    color: white;
+}
+
 .browse-info {
     color: white;
 }
