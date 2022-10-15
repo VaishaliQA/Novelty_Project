@@ -129,3 +129,12 @@ borrowBookButton.on("click", function () {
 close_borrow_modal.on("click", function () {
   closeBrowseModal();
 });
+
+// Search and Add book to database from Add Book Modal
+function addBook() {
+  console.log("Adding Book..");
+};
+
+addBookButton.on("click", function () {
+ addBook();
+});
