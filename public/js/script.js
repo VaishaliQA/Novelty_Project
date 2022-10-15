@@ -178,7 +178,7 @@ async function searchBook(isbnInput) {
 
       // Show object on screen
       const searchedBookInfo = $(".searched-book-info");
-      searchedBookInfo.replaceWith(`
+      searchedBookInfo.html(`
       <ul>
         <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
         <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description}</li>
@@ -192,13 +192,14 @@ async function searchBook(isbnInput) {
     .catch(error => console.log('error', error));
 };
 
-// const isbn = "9781936594115";
-
+// Define search button
 const searchBookButton = document.getElementById("search-book-button");
 
+// On click, capture contents of search field
 searchBookButton.addEventListener("click", () => {
+  // Define search field
   const isbnInput = document.getElementById("isbn-input").value;
-  console.log(isbnInput);
+  console.log("ISBN:", isbnInput);
   searchBook(isbnInput);
 }
 );
