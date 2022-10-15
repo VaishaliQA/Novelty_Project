@@ -85,7 +85,6 @@ step_three.on("click", function () {
 var searchModal = $(".add-book-modal");
 var browseModal = $(".browse-book-modal");
 var addBookButton = $(".addBookButton");
-var searchBookButton = $(".searchBookButton");
 var addBookButtonLibrary = $(".addBookButtonLibrary");
 var borrowBookButton = $(".borrow-book-button");
 var close_modal_x = $(".modal-close");
@@ -132,14 +131,15 @@ close_borrow_modal.on("click", function () {
 });
 
 // Search and Add book to database from Add Book Modal
-async function searchBook() {
+async function searchBook(isbnInput) {
   console.log("Searching Book..");
+  console.log("ISBN:", isbnInput);
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  
-  await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:9781936594115", requestOptions)
+
+  await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnInput, requestOptions)
     .then(response => response.json())
     .then((data) => {
       // access first entry of response
@@ -178,7 +178,7 @@ async function searchBook() {
 
       // Show object on screen
       const searchedBookInfo = $(".searched-book-info");
-      searchedBookInfo.append(`
+      searchedBookInfo.replaceWith(`
       <ul>
         <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
         <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description}</li>
@@ -192,6 +192,18 @@ async function searchBook() {
     .catch(error => console.log('error', error));
 };
 
+// const isbn = "9781936594115";
+
+const searchBookButton = document.getElementById("search-book-button");
+
+searchBookButton.addEventListener("click", () => {
+  const isbnInput = document.getElementById("isbn-input").value;
+  console.log(isbnInput);
+  searchBook(isbnInput);
+}
+);
+
 searchBookButton.on("click", function () {
-  searchBook();
+  searchBook(isbnInput);
+  console.log("ISBN Input", isbnInput)
 });
