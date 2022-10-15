@@ -379,10 +379,18 @@ li {
 }
 
 .addBookButton,
+.searchBookButton,
 .addBookButtonLibrary,
 .borrow-book-button {
     margin-bottom: 25px;
 }
+
+.Disabled,
+.Disabled:hover {
+    background-color: gray;
+    cursor: default;
+}
+
 
 /* Begin mobile */
 
