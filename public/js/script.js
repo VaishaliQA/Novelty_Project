@@ -132,16 +132,53 @@ close_borrow_modal.on("click", function () {
 });
 
 // Search and Add book to database from Add Book Modal
-function searchBook() {
+async function searchBook() {
   console.log("Searching Book..");
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
   
-  fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:9781936594115", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
+  await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:9781936594115", requestOptions)
+    .then(response => response.json())
+    .then((data) => {
+      // access first entry of response
+      const bookData = data.items[0];
+      console.log("Book Data:", bookData);
+
+      // parse response
+      const isbnList = bookData.volumeInfo.industryIdentifiers;
+      const title = bookData.volumeInfo.title;
+      const authors = bookData.volumeInfo.authors;
+      const publishedDate = bookData.volumeInfo.publishedDate;
+      const description = bookData.volumeInfo.description;
+      const categories = bookData.volumeInfo.categories;
+      const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
+
+      // grab 13 digit ISBN from array
+      let isbn13 = "";
+      isbnList.forEach((obj) => {
+        if (obj.type === "ISBN_13") {
+          isbn13 = obj.identifier;
+        }
+      });
+
+      // structure response into object
+      const obj = {
+        isbn13: isbn13,
+        title: title,
+        authors: authors,
+        publishedDate: publishedDate,
+        description: description,
+        categories: categories,
+        imageLink: imageLink,
+      };
+
+      console.log(obj);
+
+      // return response as stringified object
+      return JSON.stringify(obj);
+    })
     .catch(error => console.log('error', error));
 };
 
