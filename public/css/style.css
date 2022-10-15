@@ -148,9 +148,10 @@ body {
     flex-wrap: wrap;
 }
 
-.step {
+.step,
+.modal-header {
     background-color: black;
-    border: 2px solid white;
+    border: 3px solid white;
     color: var(--brand-orange);
     font-weight: bold;
     width: 250px;
@@ -161,6 +162,13 @@ body {
     align-items: center;
     padding: 5px;
     margin-bottom: 25px;
+}
+
+.modal-header {
+    margin: 50px 25px 25px 25px;
+    padding: 25px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .step:hover,
@@ -375,6 +383,7 @@ li {
     flex: 1 1 65%;
     display: flex;
     flex: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }

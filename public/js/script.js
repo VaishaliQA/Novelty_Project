@@ -100,10 +100,6 @@ function closeSearchModal() {
   searchModal.removeClass("is-active");
 }
 
-addBookButton.addEventListener("click", function () {
-  closeSearchModal();
-});
-
 close_modal_x.on("click", function () {
   closeSearchModal();
 });
@@ -151,7 +147,7 @@ async function searchBook(isbnInput) {
       const title = bookData.volumeInfo.title;
       const authors = bookData.volumeInfo.authors;
       const publishedDate = bookData.volumeInfo.publishedDate;
-      const description = bookData.volumeInfo.description.slice(0, 500) + "...[Read More]"; // Show the first 500 characters
+      const description = bookData.volumeInfo.description; // Show the first 500 characters
       const categories = bookData.volumeInfo.categories;
       const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
 
@@ -174,19 +170,21 @@ async function searchBook(isbnInput) {
         imageLink: imageLink,
       };
 
-      console.log(obj);
-
       // Show object on screen
       const searchedBookInfo = $(".searched-book-info");
       searchedBookInfo.html(`
       <ul>
         <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
-        <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description}</li>
+        <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description.slice(0, 500)}...[Read More]</li>
         <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
       </ul>
     `);
     // Activate Add Book button
     addBookButton.classList.remove("Disabled");
+
+    addBookButton.addEventListener("click", () => {
+      console.log("Object to Post:", obj);
+    });
 
       // return response as stringified object
       return JSON.stringify(obj);
@@ -201,12 +199,11 @@ const searchBookButton = document.getElementById("search-book-button");
 searchBookButton.addEventListener("click", () => {
   // Define search field
   const isbnInput = document.getElementById("isbn-input").value;
-  console.log("ISBN:", isbnInput);
   searchBook(isbnInput);
 }
 );
 
-searchBookButton.on("click", function () {
-  searchBook(isbnInput);
-  console.log("ISBN Input", isbnInput)
-});
+// searchBookButton.on("click", function () {
+//   searchBook(isbnInput);
+//   console.log("ISBN Input", isbnInput)
+// });
