@@ -1,16 +1,3 @@
-// // Login page
-// // Handle login
-// var loginButton = $('.loginButton');
-// loginButton.on('click', function() {
-//   window.location.replace("/browse");
-// })
-
-// // Handle logout
-// var logOutButton = $('.logOutButton');
-// logOutButton.on('click', function() {
-//   window.location.replace("/");
-// })
-
 // Nav
 // Handle library
 var libraryTab = $(".yourLibraryButton");
@@ -19,12 +6,6 @@ libraryTab.on("click", function () {
 });
 
 // // Browse
-// // Handle browse
-// var browseTab = $('.browseButton');
-// browseTab.on('click', function() {
-//   window.location.replace("/browse");
-// })
-
 // Handle book click
 var browse_book = $(".browse-book");
 browse_book.on("click", function () {
@@ -66,28 +47,18 @@ if (readStatus.val() === "You have not read this book.") {
 }
 
 // // Steps
-// var step_one = $('.step-one');
-// step_one.on('click', function() {
-//   openSearchModal();;
-// })
-
-// var step_two = $('.step-two');
-// step_two.on('click', function() {
-//   window.location.replace("/public/browse.html");
-// })
-
 var step_three = $(".step-three");
 step_three.on("click", function () {
   window.location.replace("/public/library.html");
 });
 
 // Modal
-var searchModal = $(".add-book-modal");
+// var searchModal = $(".add-book-modal");
 var browseModal = $(".browse-book-modal");
-var addBookButton = document.getElementById("add-book-button");
-var addBookButtonLibrary = $(".addBookButtonLibrary");
+// var addBookButton = document.getElementById("add-book-button");
+// var addBookButtonLibrary = $(".addBookButtonLibrary");
 var borrowBookButton = $(".borrow-book-button");
-var close_modal_x = $(".modal-close");
+// var close_add_modal = $(".add-modal-close");
 var close_borrow_modal = $(".borrow-modal-close");
 
 // Launch search modal on click
@@ -100,7 +71,7 @@ function closeSearchModal() {
   searchModal.removeClass("is-active");
 }
 
-close_modal_x.on("click", function () {
+close_add_modal.on("click", function () {
   closeSearchModal();
 });
 
