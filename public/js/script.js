@@ -177,6 +177,14 @@ async function searchBook() {
       console.log(obj);
 
       // Show object on screen
+      const searchedBookInfo = $(".searched-book-info");
+      searchedBookInfo.append(`
+      <ul>
+        <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
+        <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description}</li>
+        <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
+      </ul>
+    `);
 
       // return response as stringified object
       return JSON.stringify(obj);

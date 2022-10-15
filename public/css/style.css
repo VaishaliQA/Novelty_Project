@@ -192,8 +192,13 @@ body {
     width: 100%;
 }
 
-.browse-book-title {
+.browse-book-title,
+.search-book-result {
     color: white;
+}
+
+.search-book-result-title {
+    font-weight: bold;
 }
 
 .tooltip:hover .tooltiptext {
