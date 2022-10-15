@@ -84,7 +84,7 @@ step_three.on("click", function () {
 // Modal
 var searchModal = $(".add-book-modal");
 var browseModal = $(".browse-book-modal");
-var addBookButton = $(".addBookButton");
+var addBookButton = document.getElementById("add-book-button");
 var addBookButtonLibrary = $(".addBookButtonLibrary");
 var borrowBookButton = $(".borrow-book-button");
 var close_modal_x = $(".modal-close");
@@ -100,7 +100,7 @@ function closeSearchModal() {
   searchModal.removeClass("is-active");
 }
 
-addBookButton.on("click", function () {
+addBookButton.addEventListener("click", function () {
   closeSearchModal();
 });
 
@@ -185,6 +185,8 @@ async function searchBook(isbnInput) {
         <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
       </ul>
     `);
+    // Activate Add Book button
+    addBookButton.classList.remove("Disabled");
 
       // return response as stringified object
       return JSON.stringify(obj);
