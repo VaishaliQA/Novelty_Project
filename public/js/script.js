@@ -172,6 +172,7 @@ async function searchBook(isbnInput) {
 
       // Show object on screen
       const searchedBookInfo = $(".searched-book-info");
+      const bookAddedMessage = $(".book-added-message");
       searchedBookInfo.html(`
       <ul>
         <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
@@ -184,6 +185,7 @@ async function searchBook(isbnInput) {
 
     addBookButton.addEventListener("click", () => {
       console.log("Object to Post:", obj);
+      bookAddedMessage.html(`<p class="book-added-message">Book added</p>`);
     });
 
       // return response as stringified object
@@ -197,13 +199,11 @@ const searchBookButton = document.getElementById("search-book-button");
 
 // On click, capture contents of search field
 searchBookButton.addEventListener("click", () => {
-  // Define search field
-  const isbnInput = document.getElementById("isbn-input").value;
-  searchBook(isbnInput);
-}
+    // Define search field
+    const isbnInput = document.getElementById("isbn-input").value;
+    searchBook(isbnInput);
+    // Reset book added message
+    const bookAddedMessage = $(".book-added-message");
+    bookAddedMessage.html(``);
+  }
 );
-
-// searchBookButton.on("click", function () {
-//   searchBook(isbnInput);
-//   console.log("ISBN Input", isbnInput)
-// });

@@ -169,6 +169,7 @@ body {
     padding: 25px;
     width: fit-content;
     height: fit-content;
+    font-weight: bold;
 }
 
 .step:hover,
@@ -180,6 +181,11 @@ body {
 
 .num {
     color: white;
+}
+
+.book-added-message {
+    color: #b6d7a8;
+    font-style: italic;
 }
 
 .all-books {
@@ -390,6 +396,7 @@ li {
 
 .searchForm {
     width: 70%;
+    margin-bottom: 25px;
 }
 
 .searched-book-info {
