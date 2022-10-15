@@ -85,6 +85,7 @@ step_three.on("click", function () {
 var searchModal = $(".add-book-modal");
 var browseModal = $(".browse-book-modal");
 var addBookButton = $(".addBookButton");
+var searchBookButton = $(".searchBookButton");
 var addBookButtonLibrary = $(".addBookButtonLibrary");
 var borrowBookButton = $(".borrow-book-button");
 var close_modal_x = $(".modal-close");
@@ -131,10 +132,19 @@ close_borrow_modal.on("click", function () {
 });
 
 // Search and Add book to database from Add Book Modal
-function addBook() {
-  console.log("Adding Book..");
+function searchBook() {
+  console.log("Searching Book..");
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
+  fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:9781936594115", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 };
 
-addBookButton.on("click", function () {
- addBook();
+searchBookButton.on("click", function () {
+  searchBook();
 });
