@@ -7,10 +7,10 @@ libraryTab.on("click", function () {
 
 // // Browse
 // Handle book click
-var browse_book = $(".browse-book");
-browse_book.on("click", function () {
-  openBrowseModal();
-});
+// var browse_book = $(".browse-book");
+// browse_book.on("click", function () {
+//   openBrowseModal();
+// });
 
 // Library
 // Handle drop down toggle

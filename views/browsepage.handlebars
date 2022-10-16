@@ -5,10 +5,11 @@
   <section class="steps">
 
     <!-- Step 1 -->
-    <section class="step step-one">
+    <section class="step step-one" id="step1">
       <p><span class="num">1.</span><br />Add a book to your library to share
         with others</p>
-    </section>
+    </section>  
+
 
     <!-- Step 2 -->
     <section class="step step-two">
@@ -29,7 +30,8 @@
         <figure class="image is-4by3">
           <img
             src="https://bulma.io/images/placeholders/1280x960.png"
-            alt="Placeholder image"`
+            alt="Placeholder image"
+            `
           />
         </figure>
       </div>
@@ -87,32 +89,9 @@
   </div>
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
-<!-- Begin Browse Book Modal -->
-<div class="modal browse-book-modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <!-- Any other Bulma elements you want -->
-
-    <!-- Begin browse Modal -->
-    <section class="browseModal">
-
-      <!-- Begin left -->
-      <section class="browseLeft">
-        <img
-          class="logo"
-          src="./assets/img/novelty-logo.png"
-          alt="Novelty Logo"
-        />
-      </section>
-
-      <!-- Begin right -->
-      <section class="browseRight">
-        <section class="browse-info">
-          {{> book}}
-        </section>
-        </section>
-      </section>
-  </div>
-  <button class="modal-close borrow-modal-close is-large" aria-label="close"></button>
+<div>
+ 
+  {{> bookmodal}}
 </div>
+
+<script src="/js/browse.js"></script>
