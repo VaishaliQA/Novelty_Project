@@ -4,6 +4,7 @@ const openDialog = async (event) => {
 
   // Open book modal
   openBrowseModal();
+  // api route call
   const response = await fetch("/api/books/1", {
     method: "GET",
   });
