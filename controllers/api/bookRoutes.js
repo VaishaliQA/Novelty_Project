@@ -54,7 +54,12 @@ router.get("/library", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const bookData = await Book.findByPk(req.params.id, {
-      include: [{ model: User, as: "owner" }],
+      include: [
+        {
+          model: User,
+          as: "owner",
+        },
+      ],
     });
     if (!bookData) {
       res.status(404).json({ message: "No book with this id!" });
