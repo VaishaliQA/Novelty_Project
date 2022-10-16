@@ -19,6 +19,7 @@ router.get("/", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
 
 // Redirect to login route
 router.get("/login", (req, res) => {
