@@ -1,7 +1,7 @@
 const booksYouOwn = document.getElementById("books-you-own");
 const booksYouBorrow = document.getElementById("books-you-borrow");
 
-// Search and Add book to database from Add Book Modal
+// Load owned books
 const sampleISBN = "9780340960196";
 async function loadBooksOwned(sampleISBN) {
     console.log("Searching Book..");
@@ -23,7 +23,7 @@ async function loadBooksOwned(sampleISBN) {
         const title = bookData.volumeInfo.title;
         const authors = bookData.volumeInfo.authors;
         const publishedDate = bookData.volumeInfo.publishedDate;
-        const description = bookData.volumeInfo.description; // Show the first 500 characters
+        const description = bookData.volumeInfo.description;
         const categories = bookData.volumeInfo.categories;
         const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
 
@@ -47,9 +47,6 @@ async function loadBooksOwned(sampleISBN) {
         };
 
         // Show object on screen
-        // const booksYou = document.getElementById("books-you-own");
-        // console.log("Searched Book Info", searchedBookInfo);
-        // const bookAddedMessage = document.getElementById("book-added-message");
         booksYouOwn.innerHTML = `
             <section class="card">
             <header class="card-content">
@@ -141,9 +138,6 @@ async function loadBooksOwned(sampleISBN) {
         };
 
         // Show object on screen
-        // const boo = document.getElementById("searched-book-info");
-        // console.log("Searched Book Info", searchedBookInfo);
-        // const bookAddedMessage = document.getElementById("book-added-message");
         booksYouBorrow.innerHTML = `
             <section class="card">
             <header class="card-content">
@@ -162,15 +156,12 @@ async function loadBooksOwned(sampleISBN) {
             <section class="card-content">
                 <section class="content">
                 <ul>
-                    <li><span class="library-book-title">Description</span>: ${description.slice(0, 500)}...[Read More]</li>
-                    <li><span class="library-book-title">Authors</span>: ${authors}</li>
-                    <li><span class="library-book-title">Categories</span>: ${categories}</li>
-                    <li><span class="library-book-title">Status</span>: Borrowed by {{Borrower}}</li>
+                    <li><span class="library-book-title">Owned By</span>: {Owner}</li>
                 </ul>
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item">Share</a>
+                <a href="#" class="card-footer-item">Return Book</a>
             </footer>
             </section>
         `;
