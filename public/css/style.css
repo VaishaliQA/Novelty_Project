@@ -149,7 +149,8 @@ body {
 }
 
 .step,
-.modal-header {
+.modal-header,
+.owned-book-header {
     background-color: black;
     border: 3px solid white;
     color: var(--brand-orange);
@@ -170,6 +171,10 @@ body {
     width: fit-content;
     height: fit-content;
     font-weight: bold;
+}
+
+.owned-book-header {
+    width: 100%;
 }
 
 .step:hover,
@@ -207,14 +212,16 @@ body {
 }
 
 .browse-book-title,
-.search-book-result {
+.search-book-result,
+.library-book-title {
     color: white;
 }
 
 .search-book-result {
     margin-bottom: 10px;
 }
-.search-book-result-title {
+.search-book-result-title,
+.library-book-title {
     font-weight: bold;
 }
 
@@ -240,7 +247,6 @@ body {
     height: fit-content;
     color: white;
     text-align: center;
-    font-weight: bold;
     flex: 1 1 500px;
 }
 
