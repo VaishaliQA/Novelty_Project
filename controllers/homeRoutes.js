@@ -21,11 +21,6 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// // GET a book by ID
-// router.get('/:id', async (req, res) => {
-
-// });
-
 // Redirect to login route
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
