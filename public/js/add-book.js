@@ -1,7 +1,7 @@
-var searchModal = document.getElementById("add-book-modal");
-var addBookButton = document.getElementById("add-book-button");
-var addBookButtonLibrary = document.getElementById("add-book-button-library");
-var close_add_modal = document.getElementById("add-modal-close");
+const searchModal = document.getElementById("add-book-modal");
+const addBookButton = document.getElementById("add-book-button");
+const addBookButtonLibrary = document.getElementById("add-book-button-library");
+const close_add_modal = document.getElementById("add-modal-close");
 
 // Launch search modal on click
 function openSearchModal() {
