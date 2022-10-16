@@ -148,9 +148,10 @@ body {
     flex-wrap: wrap;
 }
 
-.step {
+.step,
+.modal-header {
     background-color: black;
-    border: 2px solid white;
+    border: 3px solid white;
     color: var(--brand-orange);
     font-weight: bold;
     width: 250px;
@@ -163,6 +164,14 @@ body {
     margin-bottom: 25px;
 }
 
+.modal-header {
+    margin: 50px 25px 25px 25px;
+    padding: 25px;
+    width: fit-content;
+    height: fit-content;
+    font-weight: bold;
+}
+
 .step:hover,
 .browse-book:hover {
     background-color: var(--brand-orange);
@@ -172,6 +181,11 @@ body {
 
 .num {
     color: white;
+}
+
+.book-added-message {
+    color: #b6d7a8;
+    font-style: italic;
 }
 
 .all-books {
@@ -192,8 +206,16 @@ body {
     width: 100%;
 }
 
-.browse-book-title {
+.browse-book-title,
+.search-book-result {
     color: white;
+}
+
+.search-book-result {
+    margin-bottom: 10px;
+}
+.search-book-result-title {
+    font-weight: bold;
 }
 
 .tooltip:hover .tooltiptext {
@@ -336,7 +358,8 @@ li {
     width: fit-content;
     height: fit-content;
     min-height: 350px;
-    margin: auto;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .searchModal,
@@ -366,12 +389,18 @@ li {
     flex: 1 1 65%;
     display: flex;
     flex: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 .searchForm {
     width: 70%;
+    margin-bottom: 25px;
+}
+
+#searched-book-info {
+    color: white;
 }
 
 .browse-info {
@@ -379,10 +408,18 @@ li {
 }
 
 .addBookButton,
-.addBookButtonLibrary,
+.searchBookButton,
+.add-book-button-library,
 .borrow-book-button {
     margin-bottom: 25px;
 }
+
+.Disabled,
+.Disabled:hover {
+    background-color: gray;
+    cursor: default;
+}
+
 
 /* Begin mobile */
 
