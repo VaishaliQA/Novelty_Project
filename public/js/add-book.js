@@ -27,7 +27,7 @@ addBookButtonLibrary.addEventListener("click", function () {
 async function searchBook(isbnInput) {
     console.log("Searching Book..");
     console.log("ISBN:", isbnInput);
-    var requestOptions = {
+    const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
