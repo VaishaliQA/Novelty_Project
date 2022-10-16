@@ -65,15 +65,15 @@ async function loadBooks(isbnInput) {
                 </figure>
                 </section>
                 <section class="owned-book-header">
-                    <h2>TITLE</h2>
+                    <h2>${title}</h2>
                 </section>
             </header>
             <section class="card-content">
                 <section class="content">
                 <ul>
-                    <li><span class="library-book-title">Description</span>: {{Description}}</li>
-                    <li><span class="library-book-title">Authors</span>: {{Authors}}</li>
-                    <li><span class="library-book-title">Categories</span>: {{Categories}}</li>
+                    <li><span class="library-book-title">Description</span>: ${description.slice(0, 500)}...[Read More]</li>
+                    <li><span class="library-book-title">Authors</span>: ${authors}</li>
+                    <li><span class="library-book-title">Categories</span>: ${categories}</li>
                     <li><span class="library-book-title">Status</span>: Borrowed by {{Borrower}}</li>
                 </ul>
                 </section>
