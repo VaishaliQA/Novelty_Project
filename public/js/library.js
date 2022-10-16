@@ -2,9 +2,11 @@ const booksYouOwn = document.getElementById("books-you-own");
 const booksYouBorrow = document.getElementById("books-you-borrow");
 
 // Load owned books
-const sampleISBN = "9780340960196";
+const sampleISBN = "9780340960196"; // Remove this after we can pull from the DB's api route
+const sampleBorrowedISBN = "0-7475-3269-9";
+// TODO: Need to load both columns at the same time
 async function loadBooksOwned(sampleISBN) {
-    console.log("Searching Book..");
+    console.log("Getting owned books..");
     console.log("ISBN:", sampleISBN);
     const requestOptions = {
       method: 'GET',
@@ -94,15 +96,15 @@ async function loadBooksOwned(sampleISBN) {
   }; loadBooksOwned(sampleISBN);
 
 // Lood Borrows books
-  async function loadBooksBorrowed(sampleISBN) {
+  async function loadBooksBorrowed(sampleBorrowedISBN) {
     console.log("Searching Book..");
-    console.log("ISBN:", sampleISBN);
+    console.log("ISBN:", sampleBorrowedISBN);
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
   
-    await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + sampleISBN, requestOptions)
+    await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + sampleBorrowedISBN, requestOptions)
         .then(response => response.json())
         .then((data) => {
         // access first entry of response
@@ -179,4 +181,4 @@ async function loadBooksOwned(sampleISBN) {
         return JSON.stringify(obj);
         })
         .catch(error => console.log('error', error));
-  }; loadBooksBorrowed(sampleISBN);
+  }; loadBooksBorrowed(sampleBorrowedISBN);
