@@ -240,8 +240,8 @@ body {
     min-height: 1200px;
 }
 
-.books-you-own,
-.books-you-borrow,
+.books-you-own-container,
+.books-you-borrow-container,
 .profile {
     width: 100%;
     height: fit-content;
@@ -431,7 +431,7 @@ li {
 
 @media (max-width: 1700px) {
     
-    .books-you-own {
+    .books-you-own-container {
         order: 1;
     }
 
@@ -447,7 +447,7 @@ li {
         order: 4;
     }
 
-    .books-you-borrow {
+    .books-you-borrow-container {
         order: 5;
     }
 
@@ -471,7 +471,7 @@ li {
         order: 1;
     }
 
-    .books-you-own {
+    .books-you-own-container {
         order: 2;
     }
 

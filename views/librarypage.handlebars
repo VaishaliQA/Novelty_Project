@@ -2,44 +2,27 @@
 <section class="library">
 
   <!-- Begin books you own -->
-  <section id="books-you-own" class="books-you-own">
-  {{!-- Books are shown here dynamically --}}
+  <section id="books-you-own-container" class="books-you-own-container">
+    <section class="library-title">
+      <h1>Books You Own</h1>
+    </section>
+    <button id="add-book-button-library" class="button is-normal add-book-button-library">ADD A BOOK</button>
+    <section id="books-you-own">
+      {{!-- Books are shown here dynamically --}}
+    </section>
   </section>
 
   <!-- Begin spacer -->
   <section class="spacer spacer-one"></section>
 
   <!-- Begin books you borrow -->
-  <section class="books-you-borrow">
+  <section id="books-you-borrow-container" class="books-you-borrow-container">
     <section class="library-title">
-      <h1>Books You Borrow</h1>
+      <h1>Books You Own</h1>
     </section>
-    <section class="card">
-      <header class="card-content">
-        <section class="media-left">
-          <figure class="image is-96x96">
-            <img
-              src="https://bulma.io/images/placeholders/96x96.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </section>
-        <p class="card-header-title">Title</p>
-      </header>
-      <section class="card-content">
-        <section class="content">
-          <ul>
-            <li>Author: First Last</li>
-            <li>Genre: Genre</li>
-            <li>Status: Unread | Reading | Read</li>
-          </ul>
-        </section>
-      </section>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Save</a>
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
+    <button id="add-book-button-library" class="button is-normal add-book-button-library">ADD A BOOK</button>
+    <section id="books-you-borrow">
+      {{!-- Books are shown here dynamically --}}
     </section>
   </section>
 
