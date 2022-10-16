@@ -2,12 +2,23 @@ const router = require("express").Router();
 const { User, Book } = require("../models");
 const withAuth = require("../utils/auth");
 
-// TODO: Remove this for testing and uncomment the get router below
-// GET all users
-// localhost:3001/api/users/
-router.get('/', async (req, res) => {
-  res.render('librarypage');
-});
+// find all users and map data.
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ["password"] },
+      order: [["first_name", "ASC"]],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render("browsepage", {
+      users,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 
 // Redirect to login route
 router.get("/login", (req, res) => {
