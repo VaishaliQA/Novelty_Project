@@ -16,6 +16,10 @@ router.get("/browse", async (req, res) => {
       where: { owner_id: { [Op.ne]: user_id } },
     });
 
+    // bookData (list of objects) passed to Browse view as context,
+    // Browse view references Book partial, Each helper to render multiple books
+    // Book partial reference book object fields
+
     res.status(200).json(bookData);
   } catch (err) {
     res.status(500).json(err);

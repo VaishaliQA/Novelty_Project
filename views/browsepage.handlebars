@@ -10,7 +10,6 @@
         with others</p>
     </section>  
 
-
     <!-- Step 2 -->
     <section class="step step-two">
       <p><span class="num">2.</span><br />Find a book to borrow</p>
@@ -24,74 +23,22 @@
   </section>
 
   <!-- Begin all books -->
-  <section class="all-books">
-    <div class="card browse-book">
-      <div class="card-image browse-book-image">
-        <figure class="image is-4by3">
-          <img
-            src="https://bulma.io/images/placeholders/1280x960.png"
-            alt="Placeholder image"
-            `
-          />
+  <section class="all-books" id="all-books">
+
+    {{!-- Render each book as card --}}
+    {{!-- TODO Reformat structure of card, consider alternative approach to fetch id --}}
+  {{#each books as |book|}}    
+    <div class="card browse-book" id="{{id}}" style="background-image:url({{book.thumbnail_url}});background-size: cover;">
+      <div class="card-image browse-book-image" id="{{id}}">
+        <figure class="image is-4by3" id="{{id}}">
+          <h1 id="{{id}}">{{book.title}}</h1>
         </figure>
       </div>
     </div>
+   {{/each}} 
   </section>
 </section>
 
-<!-- Begin Add Book Modal -->
-<div class="modal add-book-modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <!-- Any other Bulma elements you want -->
+<div id="add-book-modal"></div>
 
-    <!-- Begin Search Modal -->
-    <section class="searchModal">
-
-      <!-- Begin left -->
-      <section class="searchLeft">
-        <img
-          class="logo"
-          src="./assets/img/novelty-logo.png"
-          alt="Novelty Logo"
-        />
-      </section>
-
-      <!-- Begin right -->
-      <section class="searchRight">
-
-        <!-- Begin search form -->
-        <section class="searchForm">
-
-          <!-- Email field -->
-          <section class="field isbn-field">
-            <label class="label">ISBN</label>
-            <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="ISBN" />
-              <span class="icon is-small is-left">
-                <i class="fas fa-book"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-              </span>
-            </p>
-          </section>
-
-          <!-- Add button -->
-          <button
-            class="button is-normal addBookButton"
-            onClick="pageRedirect()"
-          >Add Book</button>
-
-        </section>
-      </section>
-    </section>
-  </div>
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<div>
- 
-  {{> bookmodal}}
-</div>
-
-<script src="/js/browse.js"></script>
+<script src="/js/addBookModal.js"></script>

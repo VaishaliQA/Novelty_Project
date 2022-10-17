@@ -16,7 +16,7 @@ const fetchBookInfo = async function (isbn_search) {
     const publishedDate = bookData.volumeInfo.publishedDate;
     const description = bookData.volumeInfo.description;
     const categories = bookData.volumeInfo.categories;
-    const imageLink = bookData.volumeInfo.imageLinks.smallThumbnail;
+    const imageLink = bookData.volumeInfo.imageLinks.thumbnail;
 
     // grab 13 digit ISBN from array
     let isbn13 = "";
