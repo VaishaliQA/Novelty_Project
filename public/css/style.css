@@ -217,11 +217,13 @@ body {
     color: white;
 }
 
-.search-book-result {
+.search-book-result,
+.book-info-item {
     margin-bottom: 10px;
 }
 .search-book-result-title,
-.library-book-title {
+.library-book-title,
+.browse-book-title {
     font-weight: bold;
 }
 
@@ -400,7 +402,8 @@ li {
     justify-content: center;
 }
 
-.searchForm {
+.searchForm,
+.browse-info {
     width: 70%;
     margin-bottom: 25px;
 }
