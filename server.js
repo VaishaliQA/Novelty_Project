@@ -33,23 +33,7 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(routes);
-
-// ----- TEST ROUTE START
-// const { Book, User } = require("./models");
-// app.get("/api", async (req, res) => {
-//   try {
-//     // Get all users, sorted by name
-//     const bookData = await Book.findAll({
-//       include: [{ all: true, nested: true }],
-//     });
-//     res.status(200).json(bookData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-// ----- TEST ROUTE END
 
 // sync sequelize models to the database, then turn on the server and start listening
 sequelize.sync({ force: false }).then(() => {
