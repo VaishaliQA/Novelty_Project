@@ -42,6 +42,10 @@ User.init(
       type: DataTypes.CHAR,
       allowNull: true,
     },
+    profile_url: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     // created hooks for hash password
