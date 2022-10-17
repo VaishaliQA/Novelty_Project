@@ -12,40 +12,6 @@ libraryTab.on("click", function () {
 //   openBrowseModal();
 // });
 
-// Library
-// Handle drop down toggle
-var readStatus = $(".dropdown");
-readStatus.on("click", function () {
-  $(".dropdown").addClass("is-active");
-});
-
-// Handle drop down toggle
-var readStatusDropdown = $(".read-status-dropdown");
-readStatusDropdown.on("mouseover", function () {
-  $(".dropdown").addClass("is-active");
-});
-
-// Handle hide drop down on selection
-readStatusDropdown.on("click", function () {
-  $(".dropdown").removeClass("is-active");
-});
-
-// Handle hide drop down on selection
-var readStatusDropdownItem = $(".dropdown-item");
-readStatusDropdownItem.on("click", function () {
-  $(".dropdown").removeClass("is-active");
-});
-
-// Handle hide drop down on selection
-readStatusDropdownItem.on("mouseout", function () {
-  $(".dropdown").removeClass("is-active");
-});
-
-// Handle dropdown coloring
-if (readStatus.val() === "You have not read this book.") {
-  $(".dropdown").css("background-color", "red");
-}
-
 // // Steps
 var step_three = $(".step-three");
 step_three.on("click", function () {

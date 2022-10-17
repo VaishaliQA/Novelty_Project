@@ -45,4 +45,32 @@ router.get("/login", (req, res) => {
   res.render("loginpage");
 });
 
+// Redirect to library route
+router.get("/library", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/librarypage");
+    return;
+  }
+  res.render("libraryPage");
+});
+
+// route for librarypage access
+router.get("/librarypage", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ["password"] },
+      order: [["first_name", "ASC"]],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render("libraryPage", {
+      users,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
