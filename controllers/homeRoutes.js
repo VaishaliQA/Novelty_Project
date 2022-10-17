@@ -46,7 +46,7 @@ router.get("/login", (req, res) => {
 });
 
 // Redirect to library route
-router.get("/library", (req, res) => {
+router.get("/library", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/librarypage");
     return;
@@ -57,15 +57,17 @@ router.get("/library", (req, res) => {
 // route for librarypage access
 router.get("/librarypage", withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-      order: [["first_name", "ASC"]],
-    });
-
-    const users = userData.map((project) => project.get({ plain: true }));
-
+    // lookup user id within session
+    const user_id = req.session.user_id;
+    // find user details by id
+    const userData = await User.findByPk(user_id, {});
+    if (!userData) {
+      res.status(404).json({ message: "No user with this id!" });
+      return;
+    }
+    const user = userData.get({ plain: true });
     res.render("libraryPage", {
-      users,
+      user,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

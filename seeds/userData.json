@@ -4,34 +4,39 @@
     "password": "mac12345",
     "first_name": "Mac",
     "last_name": "Greene",
-    "location": "Asheville"
+    "location": "Asheville, North Carolina",
+    "profile_url": "./assets/Profile_Photos/Mac's_Photo.jpg"
   },
   {
     "email": "inshasayani@hotmail.com",
     "password": "insha12345",
     "first_name": "Insha",
     "last_name": "Sayani",
-    "location": "Atlanta"
+    "location": "Atlanta, Georgia",
+    "profile_url": "./assets/Profile_Photos/Insha's_Photo.png"
   },
   {
     "email": "vaishalipatel@hotmail.com",
     "password": "vaish12345",
     "first_name": "Vaishali",
     "last_name": "Patel",
-    "location": "Malibu"
+    "location": "Malibu, California",
+    "profile_url": "./assets/Profile_Photos/Vaishali's_Photo.jpg"
   },
   {
     "email": "mikemartens@hotmail.com",
     "password": "mike12345",
     "first_name": "Mike",
     "last_name": "Martens",
-    "location": "Atlanta"
+    "location": "Atlanta, Georgia",
+    "profile_url": "./assets/Profile_Photos/Michale's_Photo.png"
   },
   {
     "email": "jonshogren@hotmail.com",
     "password": "jon12345",
     "first_name": "Jonathan",
     "last_name": "Shogren",
-    "location": "Atlanta"
+    "location": "Atlanta, Georgia",
+    "profile_url": "./assets/Profile_Photos/Jonathan's_Photo.jpg"
   }
 ]

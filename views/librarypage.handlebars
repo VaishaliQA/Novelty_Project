@@ -6,9 +6,12 @@
     <section class="library-title">
       <h1>Books You Own</h1>
     </section>
-    <button id="add-book-button-library" class="button is-normal add-book-button-library">ADD A BOOK</button>
+    <button
+      id="add-book-button-library"
+      class="button is-normal add-book-button-library"
+    >ADD A BOOK</button>
     <section id="books-you-own">
-      {{!-- Books are shown here dynamically --}}
+      {{! Books are shown here dynamically }}
     </section>
   </section>
 
@@ -21,7 +24,7 @@
       <h1>Books You Borrow</h1>
     </section>
     <section id="books-you-borrow">
-      {{!-- Books are shown here dynamically --}}
+      {{! Books are shown here dynamically }}
     </section>
   </section>
 
@@ -32,15 +35,15 @@
   <section class="profile">
     <img
       class="profile-image"
-      src="./assets/img/profileplaceholder.png"
+      src={{user.profile_url}}
       alt="Profile Placeholder"
     />
     <section class="profile-info">
       <h3>PROFILE</h3>
       <p>
-        <em>First Last</em><br />
-        <em>email@domain.com</em><br />
-        <em>City, State</em><br />
+        <em>{{user.first_name}} {{user.last_name}}</em><br />
+        <em>{{user.email}}</em><br />
+        <em>{{user.location}}</em><br />
       </p>
     </section>
   </section>
@@ -78,7 +81,12 @@
             <section class="field isbn-field">
               <label class="label">ISBN</label>
               <p class="control has-icons-left has-icons-right">
-                <input id="isbn-input" class="input isbn-input" type="text" placeholder="ISBN" />
+                <input
+                  id="isbn-input"
+                  class="input isbn-input"
+                  type="text"
+                  placeholder="ISBN"
+                />
                 <span class="icon is-small is-left">
                   <i class="fas fa-book"></i>
                 </span>
@@ -88,40 +96,37 @@
               </p>
             </section>
 
-            {{!-- Search button --}}
-            <button id="search-book-button" class="button is-normal searchBookButton"
-            >Search Book</button><br>
+            {{! Search button }}
+            <button
+              id="search-book-button"
+              class="button is-normal searchBookButton"
+            >Search Book</button><br />
 
-            {{!-- Display searched book info --}}
-            <section id ="searched-book-info" class="searched-book-info">
-              {{!-- Info shows dynamically after being seached --}}
+            {{! Display searched book info }}
+            <section id="searched-book-info" class="searched-book-info">
+              {{! Info shows dynamically after being seached }}
             </section>
-            <section id ="book-added-message" class="book-added-message">
-              {{!-- Info shows dynamically after being added --}}
+            <section id="book-added-message" class="book-added-message">
+              {{! Info shows dynamically after being added }}
             </section>
 
-            {{!-- Add button --}}
-            <button id="add-book-button"
-              class="button is-normal addBookButton Disabled">Add Book</button>
+            {{! Add button }}
+            <button
+              id="add-book-button"
+              class="button is-normal addBookButton Disabled"
+            >Add Book</button>
           </section>
         </section>
       </section>
     </section>
-    <button id="add-modal-close" class="modal-close is-large add-modal-close" aria-label="close"></button>
+    <button
+      id="add-modal-close"
+      class="modal-close is-large add-modal-close"
+      aria-label="close"
+    ></button>
   </section>
 </section>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="module" src="/js/library.js"></script>
 <script type="module" src="/js/add-book.js"></script>
 <script type="module" src="/js/script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
