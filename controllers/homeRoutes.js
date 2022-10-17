@@ -61,10 +61,7 @@ router.get("/librarypage", withAuth, async (req, res) => {
     const user_id = req.session.user_id;
     // find user details by id
     const userData = await User.findByPk(user_id, {});
-    if (!userData) {
-      res.status(404).json({ message: "No user with this id!" });
-      return;
-    }
+    
     const user = userData.get({ plain: true });
     res.render("libraryPage", {
       user,
