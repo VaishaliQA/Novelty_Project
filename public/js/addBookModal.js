@@ -46,7 +46,7 @@ function makeModal(thumbnail, title, description, authors, categories, ownedBy, 
           <li class="book-info-item" id="bookstatus"><span class="browse-book-title">Status</span>:
             ${status}</li>
           <li class="book-info-item" id="bookdesc"><span class="browse-book-title">Description</span>:
-          ${description.slice(0, 500)}...<span id="read-more" class="read-more">[Read More]</span><section class="remaining-description">${description.slice(500)}</section></li>
+          ${description.slice(0, 350)}<span id ="remaining-description" class="remaining-description">${description.slice(350)}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
         </ul>
         <section id ="book-borrowed-message" class="book-borrowed-message">
         </section>
@@ -102,12 +102,19 @@ function displayModal(e) {
         console.log("Triggering Twilio Fn Clientside");
         bookAddedMessage.innerHTML = `<p class="book-added-message">Request to borrow has been sent to ${data.owner.first_name} ${data.owner.last_name}</p>`;
       });
-    });
-}
 
-function readMore() {
-  const readMoreLink = document.getElementById("read-more");
-  readMoreLink.addEventListener("click", () => {
-    this.classList.toggle("active");
-  });
+      // Configure read more link
+      const readMoreLink = document.getElementById("read-more");
+      const remainingDescription = document.getElementById("remaining-description");
+        readMoreLink.addEventListener("click", () => {
+        console.log("click");
+        if (remainingDescription.style.display === "block") {
+          remainingDescription.style.display = "none";
+          readMoreLink.innerHTML = `[Read More]`
+        } else {
+          remainingDescription.style.display = "block";
+          readMoreLink.innerHTML = `[Show Less]`;
+        }
+      });
+    });
 }

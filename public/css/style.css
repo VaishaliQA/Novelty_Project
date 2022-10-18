@@ -435,28 +435,18 @@ li {
 }
 
 /* Collapsable */
-.collapsible {
-    background-color: #777;
-    color: white;
+.read-more {
+    color: var(--brand-orange);
+}
+
+.read-more:hover {
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-  }
-  
-  .active, .collapsible:hover {
-    background-color: #555;
-  }
-  
-  .content {
-    padding: 0 18px;
+    color: var(--brand-orange-hover);
+}
+
+.remaining-description {
     display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-  }
+}
 
 
 /* Begin mobile */
