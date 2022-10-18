@@ -2,7 +2,7 @@ const bookContainer = document.getElementById("all-books");
 const addBookEl = document.getElementById("add-book-modal");
 bookContainer.addEventListener("click", displayModal);
 
-function makeModal(imageLink, title, description, authors, categories, ownedBy, status) {
+function makeModal(thumbnail, title, description, authors, categories, ownedBy, status) {
   return `<div class="modal browse-book-modal is-active">
 <div class="modal-background"></div>
 <div class="modal-content">
@@ -32,7 +32,7 @@ function makeModal(imageLink, title, description, authors, categories, ownedBy, 
       <section class="browse-info">
         <ul>
         <li class="book-info-item" id="bookimage"><img
-        src="http://books.google.com/books/content?id=I12oPwAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+        src="${thumbnail}"
         alt="Placeholder image"
         /></li>
           <li class="book-info-item" id="booktitle"><span class="browse-book-title">Title</span>:
@@ -46,7 +46,7 @@ function makeModal(imageLink, title, description, authors, categories, ownedBy, 
           <li class="book-info-item" id="bookstatus"><span class="browse-book-title">Status</span>:
             ${status}</li>
           <li class="book-info-item" id="bookdesc"><span class="browse-book-title">Description</span>:
-          ${description}</li>
+          ${description.slice(0, 500)}...<span id="read-more" class="read-more">[Read More]</span><section class="remaining-description">${description.slice(500)}</section></li>
         </ul>
         <section id ="book-borrowed-message" class="book-borrowed-message">
         </section>
@@ -72,6 +72,7 @@ function displayModal(e) {
     .then((data) => {
       console.log(data);
       const modalHTML = makeModal(
+        data.thumbnail_url,
         data.title,
         data.description,
         data.authors.slice(3, -3),
@@ -79,17 +80,6 @@ function displayModal(e) {
         data.owner.first_name + " " + data.owner.last_name,
         data.available ? "Available" : "Unavailable"
       );
-
-      // structure response into object
-      const obj = {
-        isbn13: isbn13,
-        title: title,
-        authors: authors,
-        publishedDate: publishedDate,
-        description: description,
-        categories: categories,
-        imageLink: imageLink,
-      };
 
       // display modal
       addBookEl.innerHTML = ""; // reset container content to delete previous render
@@ -110,8 +100,14 @@ function displayModal(e) {
 
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering Twilio Fn Clientside");
-        console.log("Object to Post:", obj);
-        bookAddedMessage.innerHTML = `<p class="book-added-message">Book added</p>`;
+        bookAddedMessage.innerHTML = `<p class="book-added-message">Request to borrow has been sent to ${data.owner.first_name} ${data.owner.last_name}</p>`;
       });
     });
+}
+
+function readMore() {
+  const readMoreLink = document.getElementById("read-more");
+  readMoreLink.addEventListener("click", () => {
+    this.classList.toggle("active");
+  });
 }

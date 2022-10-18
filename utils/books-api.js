@@ -8,6 +8,7 @@ const fetchBookInfo = async function (isbn_search) {
 
     // access first entry of response
     const bookData = res.data.items[0];
+    console.log("Book Desc Link", bookData.volumeInfo);
 
     // parse response
     const isbnList = bookData.volumeInfo.industryIdentifiers;
