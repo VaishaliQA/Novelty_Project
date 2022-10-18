@@ -1,13 +1,6 @@
 const booksYouOwn = document.getElementById("books-you-own");
 const booksYouBorrow = document.getElementById("books-you-borrow");
 
-const browseButton = document.querySelector("#browseButton");
-
-// Redirect to browsepage
-browseButton.addEventListener("click", () => {
-  document.location.replace("/");
-});
-
 // Load owned books
 const sampleISBN = "9780340960196"; // Remove this after we can pull from the DB's api route
 const sampleBorrowedISBN = "0-7475-3269-9";
