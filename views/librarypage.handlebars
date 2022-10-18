@@ -56,7 +56,41 @@
       <h1>Books You Borrow</h1>
     </section>
     <section id="books-you-borrow">
-      {{! Books are shown here dynamically }}
+
+
+
+<!-- For each borrowed book, display as single in Library -->
+{{#each booksBorrowed as |singleBook| }}
+      <section class="card">
+            <header class="card-content">
+                <section class="media-left">
+                <figure class="image is-96x128">
+                    <img
+                    src="{{singleBook.thumbnail_url}}"
+                    alt="borrowed book image"
+                    />
+                </figure>
+                </section>
+                <section class="owned-book-header">
+                    <h2>{{singleBook.title}}</h2>
+                </section>
+            </header>
+            <section class="card-content">
+                <section class="content">
+                <ul>
+                    <li><span class="library-book-title">Owned By</span>: {{singleBook.owner.first_name}} {{singleBook.owner.last_name}}</li>
+                </ul>
+                </section>
+            </section>
+            <footer class="card-footer">
+                <a href="#" class="card-footer-item">Return Book</a>
+            </footer>
+            </section>
+{{/each}}
+
+
+
+
     </section>
   </section>
 
