@@ -181,6 +181,9 @@ body {
 .browse-book:hover {
     background-color: var(--brand-orange);
     color: black;
+}
+
+.browse-book:hover {
     cursor: pointer;
 }
 
@@ -204,11 +207,13 @@ body {
 
 .browse-book {
     margin: 10px;
-    flex: 0 1 250px;
+    flex: 0 0 128px;
+    height: fit-content;
 }
 
 .browse-book-image {
     width: 100%;
+    height: fit-content;
 }
 
 .browse-book-title,
@@ -217,11 +222,13 @@ body {
     color: white;
 }
 
-.search-book-result {
+.search-book-result,
+.book-info-item {
     margin-bottom: 10px;
 }
 .search-book-result-title,
-.library-book-title {
+.library-book-title,
+.browse-book-title {
     font-weight: bold;
 }
 
@@ -400,7 +407,8 @@ li {
     justify-content: center;
 }
 
-.searchForm {
+.searchForm,
+.browse-info {
     width: 70%;
     margin-bottom: 25px;
 }
@@ -424,6 +432,20 @@ li {
 .Disabled:hover {
     background-color: gray;
     cursor: default;
+}
+
+/* Collapsable */
+.read-more {
+    color: var(--brand-orange);
+}
+
+.read-more:hover {
+    cursor: pointer;
+    color: var(--brand-orange-hover);
+}
+
+.remaining-description {
+    display: none;
 }
 
 
