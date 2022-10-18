@@ -1,9 +1,9 @@
 // Nav
 // Handle library
-var libraryTab = $(".yourLibraryButton");
-libraryTab.on("click", function () {
-  window.location.replace("/library");
-});
+// var libraryTab = $(".yourLibraryButton");
+// libraryTab.on("click", function () {
+//   window.location.replace("/library");
+// });
 
 // // Browse
 // Handle book click
