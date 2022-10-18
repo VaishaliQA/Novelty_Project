@@ -1,5 +1,5 @@
 const signUpLink = document.querySelector(".signup");
-const addBookEl = document.getElementById("signup-modal");
+const signUpEl = document.getElementById("signup-modal");
 
 signUpLink
   .addEventListener("click", () => {
@@ -7,17 +7,17 @@ signUpLink
     displayModal();
   });
 
-function makeModal(thumbnail, title, description, authors, categories, ownedBy, status) {
-  return `<div class="modal browse-book-modal is-active">
-<div class="modal-background"></div>
-<div class="modal-content">
+function makeModal() {
+  return `<section class="modal signup-modal is-active">
+<section class="modal-background"></section>
+<section class="modal-content">
   <!-- Any other Bulma elements you want -->
 
-  <!-- Begin browse Modal -->
-  <section class="browseModal">
+  <!-- Begin Signup Modal -->
+  <section class="signupModal">
 
     <!-- Begin left -->
-    <section class="browseLeft">
+    <section class="searchLeft">
       <img
         class="logo"
         src="./assets/img/novelty-logo.png"
@@ -26,31 +26,88 @@ function makeModal(thumbnail, title, description, authors, categories, ownedBy, 
     </section>
 
     <!-- Begin right -->
-    <section class="browseRight">
+    <section class="searchRight">
 
-    <!-- Borrow a Book -->
+    <!-- Sign Up -->
     <section class="modal-header borrow-book-modal-header">
-      <h1>BORROW A BOOK</h1>
+      <h1>SIGN UP TO GET STARTED</h1>
     </section>
 
-    <!-- Begin book info -->
-      <section class="browse-info">
-        <ul>
-        <li class="book-info-item" id="bookimage">Test</li>
-        </ul>
-        <section id ="book-borrowed-message" class="book-borrowed-message">
+    <!-- Welcome Message -->
+    <p class="welcome-message"><span class="welcome-title">Welcome to NOVELty!</span><br>We're glad you're here. Enter your information below to begin sharing, borrowing, and reading with us.</p>
+
+    
+      <section class="search-info">
+      <!-- First Name -->
+      <section class="field first-name-field">
+        <label class="label">First Name</label>
+        <p class="control has-icons-left has-icons-right">
+          <input
+            id="signup-input"
+            class="input signup-input"
+            type="text"
+            placeholder="First Name"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-address-card"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </section>
+
+      <!-- Last Name -->
+      <section class="field last-name-field">
+        <label class="label">Last Name</label>
+        <p class="control has-icons-left has-icons-right">
+          <input
+            id="signup-input"
+            class="input signup-input"
+            type="text"
+            placeholder="Last Name"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-address-card"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </section>
+
+      <!-- Email -->
+      <section class="field email-field">
+        <label class="label">Email</label>
+        <p class="control has-icons-left has-icons-right">
+          <input
+            id="signup-input"
+            class="input signup-input"
+            type="text"
+            placeholder="Email"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </section>
+
+        <section id="signup-message" class="signup-message">
         </section>
-        <button class="button is-normal borrow-book-button" id="borrowBtn">Borrow Book</button>
+        <button class="button is-normal signupButton" id="signupButton">Sign Up</button>
       </section>
     </section>
 
   </section>
-</div>
+</section>
 <button
-  class="modal-close borrow-modal-close is-large"
+  class="modal-close signup-modal-close is-large"
   aria-label="close" id="modal-close"
 ></button>
-</div>
+</section>
 `;
 }
 
@@ -72,39 +129,38 @@ function displayModal() {
       );
 
       // display modal
-      addBookEl.innerHTML = ""; // reset container content to delete previous render
-      const divModal = document.createElement("div"); // create new div to insert html
-      divModal.innerHTML = modalHTML; // set div contents to modal string
-      addBookEl.appendChild(divModal); // append div with modal content to container
+      signUpEl.innerHTML = ""; // reset container content to delete previous render
+      const sectionModal = document.createElement("section"); // create new section to insert html
+      sectionModal.innerHTML = modalHTML; // set section contents to modal string
+      signUpEl.appendChild(sectionModal); // append section with modal content to container
 
       // configure close button
       const closeBtn = document.getElementById("modal-close");
 
       closeBtn.addEventListener("click", (e) => {
-        divModal.firstChild.classList.remove("is-active");
+        sectionModal.firstChild.classList.remove("is-active");
       });
 
       // configure borrow button
-      const borrowBtn = document.getElementById("borrowBtn");
-      const bookAddedMessage = document.getElementById("book-borrowed-message");
+      const signupButton = document.getElementById("signupButton");
+      const signUpMessage = document.getElementById("signup-message");
 
-      borrowBtn.addEventListener("click", (e) => {
-        console.log("Triggering Twilio Fn Clientside");
-        bookAddedMessage.innerHTML = `<p class="book-added-message">Request to borrow has been sent to ${data.owner.first_name} ${data.owner.last_name}</p>`;
+      signupButton.addEventListener("click", (e) => {
+        signUpMessage.innerHTML = `<p class="book-added-message">Request Submitted!</p>`;
       });
 
-      // Configure read more link
-      const readMoreLink = document.getElementById("read-more");
-      const remainingDescription = document.getElementById("remaining-description");
-        readMoreLink.addEventListener("click", () => {
-        console.log("click");
-        if (remainingDescription.style.display === "inline") {
-          remainingDescription.style.display = "none";
-          readMoreLink.innerHTML = `[Read More]`
-        } else {
-          remainingDescription.style.display = "inline";
-          readMoreLink.innerHTML = `[Show Less]`;
-        }
-      });
+      // // Configure read more link
+      // const readMoreLink = document.getElementById("read-more");
+      // const remainingDescription = document.getElementById("remaining-description");
+      //   readMoreLink.addEventListener("click", () => {
+      //   console.log("click");
+      //   if (remainingDescription.style.display === "inline") {
+      //     remainingDescription.style.display = "none";
+      //     readMoreLink.innerHTML = `[Read More]`
+      //   } else {
+      //     remainingDescription.style.display = "inline";
+      //     readMoreLink.innerHTML = `[Show Less]`;
+      //   }
+      // });
     };
 // }
