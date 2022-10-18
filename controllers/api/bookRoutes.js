@@ -91,11 +91,12 @@ router.post("/", async (req, res) => {
       categories: req.body.categories,
       thumbnail_url: req.body.thumbnail_url,
       owner_id: req.session.user_id,
-      borrower_id: req.body.borrower_id,
-      available: req.body.available,
+      borrower_id: null,
+      available: false,
     });
     res.status(200).json(postData);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

@@ -2,7 +2,7 @@ const bookContainer = document.getElementById("all-books");
 const addBookEl = document.getElementById("add-book-modal");
 bookContainer.addEventListener("click", displayModal);
 
-function makeModal(title, description, authors, categories, ownedBy, status) {
+function makeModal(thumbnail, title, description, authors, categories, ownedBy, status) {
   return `<div class="modal browse-book-modal is-active">
 <div class="modal-background"></div>
 <div class="modal-content">
@@ -22,21 +22,34 @@ function makeModal(title, description, authors, categories, ownedBy, status) {
 
     <!-- Begin right -->
     <section class="browseRight">
+
+    <!-- Borrow a Book -->
+    <section class="modal-header borrow-book-modal-header">
+      <h1>BORROW A BOOK</h1>
+    </section>
+
+    <!-- Begin book info -->
       <section class="browse-info">
         <ul>
-          <li class="browse-book-title" id="booktitle">Title:
+        <li class="book-info-item" id="bookimage"><img
+        src="${thumbnail}"
+        alt="Placeholder image"
+        /></li>
+          <li class="book-info-item" id="booktitle"><span class="browse-book-title">Title</span>:
             ${title}</li>
-          <li class="browse-book-title" id="bookauthors">Authors:
+          <li class="book-info-item" id="bookauthors"><span class="browse-book-title">Authors</span>:
             ${authors}</li>
-          <li class="browse-book-title" id="bookcategories">Categories:
+          <li class="book-info-item" id="bookcategories"><span class="browse-book-title">Categories</span>:
             ${categories}</li>
-          <li class="browse-book-title" id="ownedby">Owned By:
+          <li class="book-info-item" id="ownedby"><span class="browse-book-title">Owned By</span>:
             ${ownedBy}</li>
-          <li class="browse-book-title" id="bookstatus">Status:
+          <li class="book-info-item" id="bookstatus"><span class="browse-book-title">Status</span>:
             ${status}</li>
-          <li class="browse-book-title" id="bookdesc">Description:
-          ${description}</li>
+          <li class="book-info-item" id="bookdesc"><span class="browse-book-title">Description</span>:
+          ${description.slice(0, 500)}<span id ="remaining-description" class="remaining-description">${description.slice(500)}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
         </ul>
+        <section id ="book-borrowed-message" class="book-borrowed-message">
+        </section>
         <button class="button is-normal borrow-book-button" id="borrowBtn">Borrow Book</button>
       </section>
     </section>
@@ -57,11 +70,13 @@ function displayModal(e) {
   const bookByID = fetch(`/api/books/${bookClickID}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const modalHTML = makeModal(
+        data.thumbnail_url,
         data.title,
         data.description,
-        data.authors.slice(3, -3),
-        data.categories.slice(3, -3),
+        data.authors,
+        data.categories,
         data.owner.first_name + " " + data.owner.last_name,
         data.available ? "Available" : "Unavailable"
       );
@@ -81,9 +96,25 @@ function displayModal(e) {
 
       // configure borrow button
       const borrowBtn = document.getElementById("borrowBtn");
+      const bookAddedMessage = document.getElementById("book-borrowed-message");
 
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering Twilio Fn Clientside");
+        bookAddedMessage.innerHTML = `<p class="book-added-message">Request to borrow has been sent to ${data.owner.first_name} ${data.owner.last_name}</p>`;
+      });
+
+      // Configure read more link
+      const readMoreLink = document.getElementById("read-more");
+      const remainingDescription = document.getElementById("remaining-description");
+        readMoreLink.addEventListener("click", () => {
+        console.log("click");
+        if (remainingDescription.style.display === "inline") {
+          remainingDescription.style.display = "none";
+          readMoreLink.innerHTML = `[Read More]`
+        } else {
+          remainingDescription.style.display = "inline";
+          readMoreLink.innerHTML = `[Show Less]`;
+        }
       });
     });
 }

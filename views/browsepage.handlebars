@@ -12,13 +12,12 @@
 
     <!-- Step 2 -->
     <section class="step step-two">
-      <p><span class="num">2.</span><br />Find a book to borrow</p>
+      <p><span class="num">2.</span><br />Browse for books to borrow</p>
     </section>
 
     <!-- Step 3 -->
     <section class="step step-three">
-      <p><span class="num">3.</span><br />Read
-        <span class="keep-track">(& we'll help you keep track)</span></p>
+      <p><span class="num">3.</span><br />Borrow a book and enjoy!</p>
     </section>
   </section>
 
@@ -28,10 +27,10 @@
     {{!-- Render each book as card --}}
     {{!-- TODO Reformat structure of card, consider alternative approach to fetch id --}}
   {{#each books as |book|}}    
-    <div class="card browse-book" id="{{id}}" style="background-image:url({{book.thumbnail_url}});background-size: cover;">
+    <div class="card browse-book" id="{{id}}">
       <div class="card-image browse-book-image" id="{{id}}">
-        <figure class="image is-4by3" id="{{id}}">
-          <h1 id="{{id}}">{{book.title}}</h1>
+        <figure class="image">
+          <img id="{{id}}" src="{{book.thumbnail_url}}" alt="{{book.title}}">
         </figure>
       </div>
     </div>

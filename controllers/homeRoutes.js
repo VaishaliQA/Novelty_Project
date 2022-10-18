@@ -61,14 +61,33 @@ router.get("/librarypage", withAuth, async (req, res) => {
     const user_id = req.session.user_id;
     // find user details by id
     const userData = await User.findByPk(user_id, {});
-    if (!userData) {
-      res.status(404).json({ message: "No user with this id!" });
-      return;
-    }
+
+    // books owned by session id
+    const booksOwnedData = await Book.findAll({
+      where: {owner_id : req.session.user_id},
+      include: [{
+        model: User,
+        as: "borrower",
+      }],
+    });
+    // books borrowed by session id
+    const booksBorrowedData = await Book.findAll({
+      where: {borrower_id : req.session.user_id},
+      include: [{
+        model: User,
+        as: "owner",
+      }],
+    });
+  
     const user = userData.get({ plain: true });
+    const booksOwned = booksOwnedData.map((ownedData) => ownedData.get({ plain:true }));
+    const booksBorrowed = booksBorrowedData.map((borrowedData) => borrowedData.get({ plain:true }));
+
     res.render("libraryPage", {
       user,
       logged_in: req.session.logged_in,
+      booksOwned,
+      booksBorrowed
     });
   } catch (err) {
     res.status(500).json(err);

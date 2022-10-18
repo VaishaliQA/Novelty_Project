@@ -13,10 +13,10 @@
 // });
 
 // // Steps
-var step_three = $(".step-three");
-step_three.on("click", function () {
-  window.location.replace("/public/library.html");
-});
+// var step_three = $(".step-three");
+// step_three.on("click", function () {
+//   window.location.replace("/public/library.html");
+// });
 
 // Modal
 var browseModal = $(".browse-book-modal");
