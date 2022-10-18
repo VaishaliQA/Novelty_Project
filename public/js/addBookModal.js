@@ -75,8 +75,8 @@ function displayModal(e) {
         data.thumbnail_url,
         data.title,
         data.description,
-        data.authors.slice(3, -3),
-        data.categories.slice(3, -3),
+        data.authors,
+        data.categories,
         data.owner.first_name + " " + data.owner.last_name,
         data.available ? "Available" : "Unavailable"
       );
