@@ -91,6 +91,7 @@ router.get("/librarypage", withAuth, async (req, res) => {
       borrowedData.get({ plain: true })
     );
 
+    // render librarypage
     res.render("librarypage", {
       user,
       logged_in: req.session.logged_in,
