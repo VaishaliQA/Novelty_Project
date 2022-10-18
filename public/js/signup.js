@@ -112,36 +112,25 @@ function makeModal() {
 }
 
 function displayModal() {
-  // const bookClickID = e.target.id;
 
-  // const bookByID = fetch(`/api/books/${bookClickID}`)
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(data);
       const modalHTML = makeModal(
-        // data.thumbnail_url,
-        // data.title,
-        // data.description,
-        // data.authors,
-        // data.categories,
-        // data.owner.first_name + " " + data.owner.last_name,
-        // data.available ? "Available" : "Unavailable"
+        // We can add dynamic data here later
       );
 
-      // display modal
+      // Display modal
       signUpEl.innerHTML = ""; // reset container content to delete previous render
       const sectionModal = document.createElement("section"); // create new section to insert html
       sectionModal.innerHTML = modalHTML; // set section contents to modal string
       signUpEl.appendChild(sectionModal); // append section with modal content to container
 
-      // configure close button
+      // Configure close button
       const closeBtn = document.getElementById("modal-close");
 
       closeBtn.addEventListener("click", (e) => {
         sectionModal.firstChild.classList.remove("is-active");
       });
 
-      // configure borrow button
+      // Configure signup button
       const signupButton = document.getElementById("signupButton");
       const signUpMessage = document.getElementById("signup-message");
 
@@ -149,18 +138,5 @@ function displayModal() {
         signUpMessage.innerHTML = `<p class="book-added-message">Request Submitted!</p>`;
       });
 
-      // // Configure read more link
-      // const readMoreLink = document.getElementById("read-more");
-      // const remainingDescription = document.getElementById("remaining-description");
-      //   readMoreLink.addEventListener("click", () => {
-      //   console.log("click");
-      //   if (remainingDescription.style.display === "inline") {
-      //     remainingDescription.style.display = "none";
-      //     readMoreLink.innerHTML = `[Read More]`
-      //   } else {
-      //     remainingDescription.style.display = "inline";
-      //     readMoreLink.innerHTML = `[Show Less]`;
-      //   }
-      // });
     };
 // }

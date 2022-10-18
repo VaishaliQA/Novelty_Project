@@ -122,7 +122,7 @@ function displayModal(e) {
         emailMessage.replace(" ", "%20");
 
         window.location.href = `mailto:${ownerEmail}?subject=${emailTitle}&body=${emailMessage}`;
-        bookAddedMessage.innerHTML = `<p class="book-added-message">Request to borrow has been sent to ${data.owner.first_name} ${data.owner.last_name}</p>`;
+        bookAddedMessage.innerHTML = `<p class="book-added-message">Requesting to borrow book from ${data.owner.first_name} ${data.owner.last_name}...</p>`;
       });
 
       // Configure read more link

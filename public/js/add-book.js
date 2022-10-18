@@ -77,13 +77,33 @@ async function searchBook(isbnInput) {
       searchedBookInfo.innerHTML = `
         <ul>
             <li class="search-book-result"><span class="search-book-result-title">Title</span>: ${title}</li>
-            <li class="search-book-result"><span class="search-book-result-title">Description</span>: ${description.slice(
+            <li class="search-book-result"><span class="search-book-result-title">Description</span>:
+            ${description.slice(
               0,
               500
-            )}...[Read More]</li>
+            )}<span id ="remaining-description" class="remaining-description">${description.slice(
+      500
+    )}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
             <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
         </ul>
         `;
+
+        // Configure read more link
+        const readMoreLink = document.getElementById("read-more");
+        const remainingDescription = document.getElementById(
+          "remaining-description"
+        );
+        readMoreLink.addEventListener("click", () => {
+          console.log("click");
+          if (remainingDescription.style.display === "inline") {
+            remainingDescription.style.display = "none";
+            readMoreLink.innerHTML = `[Read More]`;
+          } else {
+            remainingDescription.style.display = "inline";
+            readMoreLink.innerHTML = `[Show Less]`;
+          }
+        });
+
 
       // Activate Add Book button
       addBookButton.classList.remove("Disabled");
