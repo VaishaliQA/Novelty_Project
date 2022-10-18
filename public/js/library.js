@@ -4,9 +4,9 @@ const booksYouBorrow = document.getElementById("books-you-borrow");
 const browseButton = document.querySelector("#browseButton");
 
 // Redirect to browsepage
-browseButton.addEventListener("click", () => {
-  document.location.replace("/");
-});
+// browseButton.addEventListener("click", () => {
+//   document.location.replace("/");
+// });
 
 // Load owned books
 const sampleISBN = "9780340960196"; // Remove this after we can pull from the DB's api route

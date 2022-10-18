@@ -4,14 +4,20 @@
 
   <section class="tabs">
     <section class="browseTab">
-      <button
-        class="button is-normal browseButton"
-        id="browseButton"
-      >Browse</button>
+      <a href="/">
+        <button
+          class="button is-normal browseButton"
+          id="browseButton"
+        >Browse</button>
+      </a>
     </section>
     <section class="yourLibraryTab">
-      <button class="button is-normal yourLibraryButton" id="libraryButton">Your
-        Library</button>
+      <a href="/librarypage">
+        <button
+          class="button is-normal yourLibraryButton"
+          id="libraryButton"
+        >Your Library</button>
+      </a>
     </section>
     <section class="logoutTab">
       <button class="button is-normal logOutButton" id="logout">Logout</button>
@@ -20,3 +26,5 @@
 </nav>
 
 <script src="/js/logout.js"></script>
+{{! <script src="/js/browse.js"></script>
+<script src="/js/library.js"></script> }}
