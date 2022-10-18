@@ -11,7 +11,39 @@
       class="button is-normal add-book-button-library"
     >ADD A BOOK</button>
     <section id="books-you-own">
-      {{! Books are shown here dynamically }}
+
+<!-- For each owned book, display as single in Library -->
+{{#each booksOwned as |singleBook| }}
+    <section class="card">
+            <header class="card-content">
+                <section class="media-left">
+                <figure class="image is-96x128">
+                    <img
+                    src="{{singleBook.thumbnail_url}}"
+                    alt="owned book image"
+                    />
+                </figure>
+                </section>
+                <section class="owned-book-header">
+                    <h2>{{singleBook.title}}</h2>
+                </section>
+            </header>
+            <section class="card-content">
+                <section class="content">
+                <ul>
+                    <li><span class="library-book-title">Description</span>: {{singleBook.description}}</li>
+                    <li><span class="library-book-title">Authors</span>: {{singleBook.authors}}</li>
+                    <li><span class="library-book-title">Categories</span>: {{singleBook.categories}}</li>
+                    <li><span class="library-book-title">Status</span>: Borrowed by {{singleBook.borrower.first_name}} {{singleBook.borrower.last_name}}</li>
+                </ul>
+                </section>
+            </section>
+            <footer class="card-footer">
+                <a href="#" class="card-footer-item">Share</a>
+            </footer>
+            </section>
+  {{/each}}
+            
     </section>
   </section>
 
@@ -127,6 +159,6 @@
   </section>
 </section>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="module" src="/js/library.js"></script>
+{{!-- <script type="module" src="/js/library.js"></script> --}}
 <script type="module" src="/js/add-book.js"></script>
 <script type="module" src="/js/script.js"></script>
