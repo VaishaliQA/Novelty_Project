@@ -78,16 +78,21 @@ router.get("/librarypage", withAuth, async (req, res) => {
         as: "owner",
       }],
     });
+    // calling all users for checkout
+    const allUsersData = await User.findAll({});
   
     const user = userData.get({ plain: true });
     const booksOwned = booksOwnedData.map((ownedData) => ownedData.get({ plain:true }));
     const booksBorrowed = booksBorrowedData.map((borrowedData) => borrowedData.get({ plain:true }));
+    const allUsers = allUsersData.map((userNames) => userNames.get({ plain: true }));
+    console.log(allUsers);
 
     res.render("libraryPage", {
       user,
       logged_in: req.session.logged_in,
       booksOwned,
-      booksBorrowed
+      booksBorrowed,
+      allUsers
     });
   } catch (err) {
     res.status(500).json(err);
