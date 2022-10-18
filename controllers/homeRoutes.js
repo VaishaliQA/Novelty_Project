@@ -62,12 +62,39 @@ router.get("/librarypage", withAuth, async (req, res) => {
     // find user details by id
     const userData = await User.findByPk(user_id, {});
     
+    
+    
+    
+    //Books owned by session id
+    const booksOwnedData = await Book.findAll({
+      where: {owner_id : req.session.user_id},
+      include: [{
+        model: User,
+        as: "borrower",
+      }],
+    });
+    //Books borrowed by sess id
+    const booksBorrowedData = await Book.findAll({
+      where: {borrower_id : req.session.user_id}
+    });
+
+
+
+    
+  
     const user = userData.get({ plain: true });
+    const booksOwned = booksOwnedData.map((ownedData) => ownedData.get({ plain:true }));
+    const booksBorrowed = booksBorrowedData.map((borrowedData) => borrowedData.get({ plain:true }));
+    console.log(booksOwned);
+
     res.render("libraryPage", {
       user,
       logged_in: req.session.logged_in,
+      booksOwned,
+      booksBorrowed
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
