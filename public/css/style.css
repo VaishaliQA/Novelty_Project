@@ -1,8 +1,8 @@
 /* Global css */
 :root {
     font-family: Arial, Helvetica, sans-serif;
-    --brand-orange: #f9cb9cff;
-    --brand-orange-hover: rgb(249, 211, 173);
+    --brand-orange: rgb(249, 203, 156);
+    --brand-orange-hover: rgb(248, 217, 184);
     --step-hover-bg: rgba(249, 211, 173, .5);
 }
 
@@ -33,7 +33,7 @@ body {
     display: flex;
     align-items: flex-end;
     margin-left: 10px;
-    margin-bottom: -5px;
+    margin-bottom: -3px;
 }
 
 .browseButton:hover,
@@ -47,6 +47,8 @@ body {
 .yourLibraryButton,
 .logoutButton {
     border: none;
+    margin-top: 2px;
+    width: fit-content;
 }
 
 a,
@@ -109,6 +111,14 @@ a:hover,
 .button {
     background-color: var(--brand-orange);
     font-weight: bold;
+    border: none;
+}
+
+.browseButton,
+.yourLibraryButton {
+    background-color: rgba(1, 1, 1, 0);
+    font-weight: bold;
+    border: none;
 }
 
 .button:hover {
@@ -179,6 +189,7 @@ a:hover,
 
 .browse-book:hover {
     cursor: pointer;
+    opacity: 75%;
 }
 
 .num {
@@ -282,10 +293,6 @@ a:hover,
 .card {
     background-color: black;
     border: 2px solid white;
-}
-
-.card:hover {
-    opacity: 75%;
 }
 
 .card-header-title {
