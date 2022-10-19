@@ -35,12 +35,26 @@
                     <li><span class="library-book-title">Description</span>: {{singleBook.description}}</li>
                     <li><span class="library-book-title">Authors</span>: {{singleBook.authors}}</li>
                     <li><span class="library-book-title">Categories</span>: {{singleBook.categories}}</li>
-                    <li><span class="library-book-title">Status</span>: Borrowed by {{singleBook.borrower.first_name}} {{singleBook.borrower.last_name}}</li>
+                    <br/>
+                    <li><span class="library-book-title">Borrower</span>:
+
+                    {{!-- Dropdown to display all Users in Status --}}
+                    <select name="statusDropdown" id="singleBorrower">
+                    {{#if singleBook.available}}
+                    <option>None</option>
+                    {{else}}
+                    <option value="{{singleBook.borrower.id}}">{{singleBook.borrower.first_name}} {{singleBook.borrower.last_name}}</option>
+                    {{/if}}
+                    {{#each ../allUsers as |singleUser|}}
+                    <option value="{{singleUser.id}}">{{singleUser.first_name}} {{singleUser.last_name}}</option>
+                    {{/each}}
+                    </select></li>
+                    <li><i>*to set status to Available select your own name</i></li>
                 </ul>
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item">Share</a>
+                <a href="#" class="card-footer-item" id="statusSave" data-bookId = "{{singleBook.id}}">Save</a>
             </footer>
             </section>
   {{/each}}
@@ -58,7 +72,11 @@
       <section class="totals">TOTAL: {{#if booksBorrowed}}{{booksBorrowed.length}}{{/if}}</section>
     </section>
     <section id="books-you-borrow">
-
+      <button onclick="location.href='/'"
+      id="add-book-button-library"
+      class="button is-normal add-book-button-library"
+    >BORROW A BOOK</button>
+  
 
 
 <!-- For each borrowed book, display as single in Library -->
@@ -195,6 +213,6 @@
   </section>
 </section>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-{{!-- <script type="module" src="/js/library.js"></script> --}}
 <script type="module" src="/js/add-book.js"></script>
-{{!-- <script type="module" src="/js/script.js"></script> --}}
+<script type="module" src="/js/saveBorrowerStatus.js"></script>
+
