@@ -34,26 +34,22 @@
                     <li><span class="library-book-title">Description</span>: {{singleBook.description}}</li>
                     <li><span class="library-book-title">Authors</span>: {{singleBook.authors}}</li>
                     <li><span class="library-book-title">Categories</span>: {{singleBook.categories}}</li>
+                    <br/>
+                    <li><span class="library-book-title">Status</span>: Checkout to
 
-                    {{!-- Working dropdown - each loop needs to display all Users --}}
-                    <li><span class="library-book-title">Status</span>: Borrowed by
-                    
-                    <select name="cars" id="cars">
+                    {{!-- Dropdown to display all Users in Status --}}
+                    <select name="statusDropdown" id="dropdown">
                     <option value="{{singleBook.borrower.id}}">{{singleBook.borrower.first_name}} {{singleBook.borrower.last_name}}</option>
-                    {{#each allUsers as |singleUser|}}
+                    {{#each ../allUsers as |singleUser|}}
                     
-                    <option value="{{../singleUser.id}}">{{../singleUser.first_name}} {{../singleUser.last_name}}</option>
+                    <option value="{{singleUser.id}}">{{singleUser.first_name}} {{singleUser.last_name}}</option>
                     {{/each}}
                     </select></li>
-
-
-
-
+                    <li><i>*to set status to Available select your own name</i></li>
                 </ul>
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item">Share</a>
                 <a href="#" class="card-footer-item">Save</a>
             </footer>
             </section>
