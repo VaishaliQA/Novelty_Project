@@ -105,10 +105,25 @@ router.post("/", async (req, res) => {
 // localhost:3001/api/books/:id
 router.put("/:id", async (req, res) => {
   try {
-    const updateStatus = await Book.update(req.body, {
-      where: { id: req.params.id },
-    });
-    res.status(200).json(updateStatus);
+
+    if (req.body.borrower_id = req.session.user_id) {
+      const updateStatus = await Book.update({
+        available : true, 
+        borrower_id : null
+      }, {
+        where: { id: req.params.id },
+      });
+      res.status(200).json(updateStatus);
+    } else {
+      const updateStatus = await Book.update({
+        available : false, 
+        borrower_id : req.body.borrower_id
+      }, {
+        where: { id: req.params.id },
+      });
+      res.status(200).json(updateStatus);
+    }
+    
   } catch (error) {
     console.error(error);
     res.status(400).end();
