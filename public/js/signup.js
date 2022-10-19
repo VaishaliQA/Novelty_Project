@@ -1,11 +1,10 @@
 const signUpLink = document.querySelector(".signup");
 const signUpEl = document.getElementById("signup-modal");
 
-signUpLink
-  .addEventListener("click", () => {
-    console.log("click");
-    displayModal();
-  });
+signUpLink.addEventListener("click", () => {
+  console.log("click");
+  displayModal();
+});
 
 function makeModal() {
   return `<section class="modal signup-modal is-active">
@@ -38,12 +37,51 @@ function makeModal() {
 
     
       <section class="search-info">
+
+      <!-- Email -->
+      <section class="field email-field">
+        <label class="label">Email</label>
+        <p class="control has-icons-left has-icons-right">
+          <input
+            id="signup-input-email"
+            class="input signup-input"
+            type="text"
+            placeholder="Email"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </section>
+
+      <!-- Password -->
+      <section class="field first-name-field">
+        <label class="label">Password</label>
+        <p class="control has-icons-left has-icons-right">
+          <input
+            id="signup-input-password"
+            class="input signup-input"
+            type="password"
+            placeholder="password"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-address-card"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </section>      
+
       <!-- First Name -->
       <section class="field first-name-field">
         <label class="label">First Name</label>
         <p class="control has-icons-left has-icons-right">
           <input
-            id="signup-input"
+            id="signup-input-first_name"
             class="input signup-input"
             type="text"
             placeholder="First Name"
@@ -62,7 +100,7 @@ function makeModal() {
         <label class="label">Last Name</label>
         <p class="control has-icons-left has-icons-right">
           <input
-            id="signup-input"
+            id="signup-input-last_name"
             class="input signup-input"
             type="text"
             placeholder="Last Name"
@@ -76,18 +114,18 @@ function makeModal() {
         </p>
       </section>
 
-      <!-- Email -->
-      <section class="field email-field">
-        <label class="label">Email</label>
+      <!-- Location -->
+      <section class="field last-name-field">
+        <label class="label">Location</label>
         <p class="control has-icons-left has-icons-right">
           <input
-            id="signup-input"
-            class="input signup-input"
+            id="signup-input-location"
+            class="input signup-location"
             type="text"
-            placeholder="Email"
+            placeholder="Austin, Tx"
           />
           <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-address-card"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
@@ -112,31 +150,61 @@ function makeModal() {
 }
 
 function displayModal() {
+  const modalHTML = makeModal();
+  // We can add dynamic data here later
 
-      const modalHTML = makeModal(
-        // We can add dynamic data here later
-      );
+  // Display modal
+  signUpEl.innerHTML = ""; // reset container content to delete previous render
+  const sectionModal = document.createElement("section"); // create new section to insert html
+  sectionModal.innerHTML = modalHTML; // set section contents to modal string
+  signUpEl.appendChild(sectionModal); // append section with modal content to container
 
-      // Display modal
-      signUpEl.innerHTML = ""; // reset container content to delete previous render
-      const sectionModal = document.createElement("section"); // create new section to insert html
-      sectionModal.innerHTML = modalHTML; // set section contents to modal string
-      signUpEl.appendChild(sectionModal); // append section with modal content to container
+  // Configure close button
+  const closeBtn = document.getElementById("modal-close");
 
-      // Configure close button
-      const closeBtn = document.getElementById("modal-close");
+  closeBtn.addEventListener("click", (e) => {
+    sectionModal.firstChild.classList.remove("is-active");
+  });
 
-      closeBtn.addEventListener("click", (e) => {
-        sectionModal.firstChild.classList.remove("is-active");
+  // Configure signup button
+  const signupButton = document.getElementById("signupButton");
+  const signUpMessage = document.getElementById("signup-message");
+
+  // Define function, post book data to backend
+  async function postUser(userObj) {
+    try {
+      const response = await fetch("/api/users/", {
+        method: "POST",
+        body: JSON.stringify(userObj),
+        headers: { "Content-Type": "application/json" },
       });
+    } catch (err) {
+      (err) => console.log("error", err);
+    }
+  }
 
-      // Configure signup button
-      const signupButton = document.getElementById("signupButton");
-      const signUpMessage = document.getElementById("signup-message");
+  signupButton.addEventListener("click", (e) => {
+    const email = document.getElementById("signup-input-email").value;
+    const password = document.getElementById("signup-input-password").value;
+    const firstName = document.getElementById("signup-input-first_name").value;
+    const lastName = document.getElementById("signup-input-last_name").value;
+    const location = document.getElementById("signup-input-location").value;
 
-      signupButton.addEventListener("click", (e) => {
-        signUpMessage.innerHTML = `<p class="book-added-message">Request Submitted!</p>`;
-      });
-
+    const userObj = {
+      email: email,
+      password: password,
+      first_name: firstName,
+      last_name: lastName,
+      location: location,
     };
+
+    postUser(userObj)
+      .then(
+        (signUpMessage.innerHTML = `<p class="book-added-message">Request Submitted!</p>`)
+      )
+      .catch((e) => {
+        signUpMessage.innerHTML = `<p class="book-added-message">Password Must Be 8 Characters or More!</p>`;
+      });
+  });
+}
 // }

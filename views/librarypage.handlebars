@@ -4,7 +4,8 @@
   <!-- Begin books you own -->
   <section id="books-you-own-container" class="books-you-own-container">
     <section class="library-title">
-      <h1>Books You Own</h1>
+      <h1>BOOKS YOU OWN</h1>
+      <section class="totals">TOTAL: {{#if booksOwned}}{{booksOwned.length}}{{/if}}</section>
     </section>
     <button
       id="add-book-button-library"
@@ -67,7 +68,8 @@
   <!-- Begin books you borrow -->
   <section id="books-you-borrow-container" class="books-you-borrow-container">
     <section class="library-title">
-      <h1>Books You Borrow</h1>
+      <h1>BOOKS YOU BORROW</h1>
+      <section class="totals">TOTAL: {{#if booksBorrowed}}{{booksBorrowed.length}}{{/if}}</section>
     </section>
     <section id="books-you-borrow">
       <button onclick="location.href='/'"
@@ -213,4 +215,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="module" src="/js/add-book.js"></script>
 <script type="module" src="/js/saveBorrowerStatus.js"></script>
-<script type="module" src="/js/script.js"></script>
+
