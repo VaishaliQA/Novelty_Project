@@ -27,7 +27,10 @@ Book.init(
       set(value) {
         this.setDataValue(
           "authors",
-          JSON.stringify(value).replace("[", "").replace("]", "")
+          JSON.stringify(value)
+            .replace("[", "")
+            .replace("]", "")
+            .replace(/['"]+/g, "")
         );
       },
     },
@@ -46,7 +49,10 @@ Book.init(
       set(value) {
         this.setDataValue(
           "categories",
-          JSON.stringify(value).replace("[", "").replace("]", "")
+          JSON.stringify(value)
+            .replace("[", "")
+            .replace("]", "")
+            .replace(/['"]+/g, "")
         );
       },
     },
