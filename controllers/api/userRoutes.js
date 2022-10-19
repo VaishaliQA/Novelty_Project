@@ -40,9 +40,11 @@ router.post("/", async (req, res) => {
   try {
     const newUser = await User.create({
       email: req.body.email,
+      password: req.body.password,
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       location: req.body.location,
+      profile_url: "./assets/img/profileplaceholder.png",
     });
     res.status(200).json(newUser);
   } catch (error) {
