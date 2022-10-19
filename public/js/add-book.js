@@ -82,28 +82,27 @@ async function searchBook(isbnInput) {
               0,
               500
             )}<span id ="remaining-description" class="remaining-description">${description.slice(
-      500
-    )}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
+        500
+      )}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
             <li class="search-book-result"><span class="search-book-result-title">Authors</span>: ${authors}</li>
         </ul>
         `;
 
-        // Configure read more link
-        const readMoreLink = document.getElementById("read-more");
-        const remainingDescription = document.getElementById(
-          "remaining-description"
-        );
-        readMoreLink.addEventListener("click", () => {
-          console.log("click");
-          if (remainingDescription.style.display === "inline") {
-            remainingDescription.style.display = "none";
-            readMoreLink.innerHTML = `[Read More]`;
-          } else {
-            remainingDescription.style.display = "inline";
-            readMoreLink.innerHTML = `[Show Less]`;
-          }
-        });
-
+      // Configure read more link
+      const readMoreLink = document.getElementById("read-more");
+      const remainingDescription = document.getElementById(
+        "remaining-description"
+      );
+      readMoreLink.addEventListener("click", () => {
+        console.log("click");
+        if (remainingDescription.style.display === "inline") {
+          remainingDescription.style.display = "none";
+          readMoreLink.innerHTML = `[Read More]`;
+        } else {
+          remainingDescription.style.display = "inline";
+          readMoreLink.innerHTML = `[Show Less]`;
+        }
+      });
 
       // Activate Add Book button
       addBookButton.classList.remove("Disabled");
@@ -142,10 +141,12 @@ async function postBook(bookObj) {
 const searchBookButton = document.getElementById("search-book-button");
 
 // On click, capture contents of search field
-searchBookButton.addEventListener("click", () => {
+searchBookButton.addEventListener("click", async () => {
   // Define search field
   const isbnInput = document.getElementById("isbn-input").value;
   searchBook(isbnInput);
   const bookAddedMessage = document.getElementById("book-added-message");
   bookAddedMessage.innerHTML = ``;
+  await new Promise((resolve) => setTimeout(resolve, 3000)); // delay for 3 seconds
+  location.reload(); // reload
 });
