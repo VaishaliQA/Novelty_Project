@@ -75,7 +75,7 @@ async function searchBook(isbnInput) {
             : "Not Available";
 
         const thumbnail_url =
-          "imageLinks.thumbnail" in bookData.volumeInfo
+          "imageLinks" in bookData.volumeInfo
             ? bookData.volumeInfo.imageLinks.thumbnail
             : "public/assets/img/bookplaceholder.png";
 
@@ -145,7 +145,7 @@ async function searchBook(isbnInput) {
               return;
             })
             .catch(() => {
-              bookAddedMessage.innerHTML = `<p class="book-added-message">Error, Please Try Again/p>`;
+              bookAddedMessage.innerHTML = `<p class="book-added-error-message">Error, Please Try Again/p>`;
             });
         });
 
