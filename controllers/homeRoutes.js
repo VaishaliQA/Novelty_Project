@@ -54,40 +54,48 @@ router.get("/library", async (req, res) => {
   res.render("libraryPage");
 });
 
-// route for librarypage access
+// Route for librarypage access
 router.get("/librarypage", withAuth, async (req, res) => {
   try {
     // lookup user id within session
     const user_id = req.session.user_id;
     // find user details by id
     const userData = await User.findByPk(user_id, {});
-
     // books owned by session id
     const booksOwnedData = await Book.findAll({
-      where: {owner_id : req.session.user_id},
-      include: [{
-        model: User,
-        as: "borrower",
-      }],
+      where: { owner_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          as: "borrower",
+        },
+      ],
     });
     // books borrowed by session id
     const booksBorrowedData = await Book.findAll({
-      where: {borrower_id : req.session.user_id},
-      include: [{
-        model: User,
-        as: "owner",
-      }],
+      where: { borrower_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          as: "owner",
+        },
+      ],
     });
     // calling all users for checkout
     const allUsersData = await User.findAll({});
-  
     const user = userData.get({ plain: true });
-    const booksOwned = booksOwnedData.map((ownedData) => ownedData.get({ plain:true }));
-    const booksBorrowed = booksBorrowedData.map((borrowedData) => borrowedData.get({ plain:true }));
+    const booksOwned = booksOwnedData.map((ownedData) =>
+      ownedData.get({ plain: true })
+    );
+    const booksBorrowed = booksBorrowedData.map((borrowedData) =>
+      borrowedData.get({ plain: true })
+    );
+    
     const allUsers = allUsersData.map((userNames) => userNames.get({ plain: true }));
     console.log(allUsers);
 
-    res.render("libraryPage", {
+    // render librarypage
+    res.render("librarypage", {
       user,
       logged_in: req.session.logged_in,
       booksOwned,

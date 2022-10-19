@@ -1,13 +1,6 @@
 const booksYouOwn = document.getElementById("books-you-own");
 const booksYouBorrow = document.getElementById("books-you-borrow");
 
-const browseButton = document.querySelector("#browseButton");
-
-// Redirect to browsepage
-browseButton.addEventListener("click", () => {
-  document.location.replace("/");
-});
-
 // Load owned books
 const sampleISBN = "9780340960196"; // Remove this after we can pull from the DB's api route
 const sampleBorrowedISBN = "0-7475-3269-9";
@@ -77,10 +70,13 @@ async function loadBooksOwned(sampleISBN) {
             <section class="card-content">
                 <section class="content">
                 <ul>
-                    <li><span class="library-book-title">Description</span>: ${description.slice(
+                    <li><span class="library-book-title">Description</span>:
+                    ${description.slice(
                       0,
                       500
-                    )}...[Read More]</li>
+                    )}<span id ="remaining-description" class="remaining-description">${description.slice(
+              500
+            )}</span>...<span id="read-more" class="read-more">[Read More]</span></li>
                     <li><span class="library-book-title">Authors</span>: ${authors}</li>
                     <li><span class="library-book-title">Categories</span>: ${categories}</li>
                     <li><span class="library-book-title">Status</span>: Borrowed by {{Borrower}}</li>
@@ -198,5 +194,23 @@ async function loadBooksBorrowed(sampleBorrowedISBN) {
       return JSON.stringify(obj);
     })
     .catch((error) => console.log("error", error));
+
+    // Configure read more link
+    const readMoreLink = document.getElementById("read-more");
+    const remainingDescription = document.getElementById(
+      "remaining-description"
+    );
+    readMoreLink.addEventListener("click", () => {
+      console.log("click");
+      if (remainingDescription.style.display === "inline") {
+        remainingDescription.style.display = "none";
+        readMoreLink.innerHTML = `[Read More]`;
+      } else {
+        remainingDescription.style.display = "inline";
+        readMoreLink.innerHTML = `[Show Less]`;
+      }
+    });
+
 }
+
 loadBooksBorrowed(sampleBorrowedISBN);

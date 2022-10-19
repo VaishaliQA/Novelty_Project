@@ -23,6 +23,13 @@ Book.init(
     authors: {
       type: DataTypes.CHAR,
       allowNull: true,
+      // getter function to stringify array and remove brackets upon submittal
+      set(value) {
+        this.setDataValue(
+          "authors",
+          JSON.stringify(value).replace("[", "").replace("]", "")
+        );
+      },
     },
     published_date: {
       type: DataTypes.CHAR,
@@ -35,6 +42,13 @@ Book.init(
     categories: {
       type: DataTypes.CHAR,
       allowNull: true,
+      // getter function to stringify array and remove brackets upon submittal
+      set(value) {
+        this.setDataValue(
+          "categories",
+          JSON.stringify(value).replace("[", "").replace("]", "")
+        );
+      },
     },
     thumbnail_url: {
       type: DataTypes.TEXT,

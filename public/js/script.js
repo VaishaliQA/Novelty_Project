@@ -1,9 +1,9 @@
 // Nav
 // Handle library
-var libraryTab = $(".yourLibraryButton");
-libraryTab.on("click", function () {
-  window.location.replace("/library");
-});
+// var libraryTab = $(".yourLibraryButton");
+// libraryTab.on("click", function () {
+//   window.location.replace("/library");
+// });
 
 // // Browse
 // Handle book click
@@ -13,10 +13,10 @@ libraryTab.on("click", function () {
 // });
 
 // // Steps
-var step_three = $(".step-three");
-step_three.on("click", function () {
-  window.location.replace("/public/library.html");
-});
+// var step_three = $(".step-three");
+// step_three.on("click", function () {
+//   window.location.replace("/public/library.html");
+// });
 
 // Modal
 var browseModal = $(".browse-book-modal");
