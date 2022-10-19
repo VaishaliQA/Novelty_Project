@@ -1,5 +1,4 @@
-// const saveBtn = document.getElementById("statusSave");
-
+// Put request for saving borrower to db
 async function saveBorrowerStatus(event){
     const borrower_id = document.querySelector("#singleBorrower").value;
     const bookId = event.target.getAttribute("data-bookId");
@@ -8,16 +7,9 @@ async function saveBorrowerStatus(event){
         body: JSON.stringify({ borrower_id }),
         headers: { "Content-Type": "application/json" },
       });
-
-    
-    // Event listener on save button
-    // saveBtn.addEventListener("click", () => {
-    //   
-    //   window.alert("Book checked out!");
-    // });
 }
 document
   .querySelector("#statusSave")
   .addEventListener("click", saveBorrowerStatus);
 
-// saveBorrowerStatus()
+saveBorrowerStatus();
