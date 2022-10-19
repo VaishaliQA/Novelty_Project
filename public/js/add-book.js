@@ -47,13 +47,37 @@ async function searchBook(isbnInput) {
         console.log("Book Data:", bookData);
 
         // parse response
-        const isbnList = bookData.volumeInfo.industryIdentifiers;
+        // parse response
+        const isbnList =
+          "industryIdentifiers" in bookData.volumeInfo
+            ? bookData.volumeInfo.industryIdentifiers
+            : isbnInput;
+
         const title = bookData.volumeInfo.title;
+        // "title" in bookData.volumeInfo ? bookData.volumeInfo.title : 'Not Available';
+
         const authors = bookData.volumeInfo.authors;
-        const publishedDate = bookData.volumeInfo.publishedDate;
-        const description = bookData.volumeInfo.description; // Show the first 500 characters
-        const categories = bookData.volumeInfo.categories;
-        const thumbnail_url = bookData.volumeInfo.imageLinks.thumbnail;
+        // "authors" in bookData.volumeInfo ? bookData.volumeInfo.authors : 'Not Available';
+
+        const publishedDate =
+          "publishedDate" in bookData.volumeInfo
+            ? bookData.volumeInfo.publishedDate
+            : "Not Available";
+
+        const description =
+          "description" in bookData.volumeInfo
+            ? bookData.volumeInfo.description
+            : "Not Available";
+
+        const categories =
+          "categories" in bookData.volumeInfo
+            ? bookData.volumeInfo.categories
+            : "Not Available";
+
+        const thumbnail_url =
+          "imageLinks" in bookData.volumeInfo
+            ? bookData.volumeInfo.imageLinks.thumbnail
+            : "public/assets/img/bookplaceholder.png";
 
         // grab 13 digit ISBN from array
         let isbn13 = "";
@@ -114,12 +138,14 @@ async function searchBook(isbnInput) {
         addBookButton.addEventListener("click", () => {
           // console.log("Object to Post:", obj);
           const postRes = postBook(obj)
-            .then(() => {
+            .then(async () => {
               bookAddedMessage.innerHTML = `<p class="book-added-message">Book Added</p>`;
+              await new Promise((resolve) => setTimeout(resolve, 3000)); // delay for 3 seconds
+              location.reload(); // reload
               return;
             })
             .catch(() => {
-              bookAddedMessage.innerHTML = `<p class="book-added-message">Error, Please Try Again/p>`;
+              bookAddedMessage.innerHTML = `<p class="book-added-error-message">Error, Please Try Again/p>`;
             });
         });
 
@@ -152,6 +178,4 @@ searchBookButton.addEventListener("click", async () => {
   searchBook(isbnInput);
   const bookAddedMessage = document.getElementById("book-added-message");
   bookAddedMessage.innerHTML = ``;
-  await new Promise((resolve) => setTimeout(resolve, 3000)); // delay for 3 seconds
-  location.reload(); // reload
 });
