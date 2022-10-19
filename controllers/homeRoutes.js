@@ -92,7 +92,7 @@ router.get("/librarypage", withAuth, async (req, res) => {
     );
     
     const allUsers = allUsersData.map((userNames) => userNames.get({ plain: true }));
-    console.log(allUsers);
+    console.log(booksOwned);
 
     // render librarypage
     res.render("librarypage", {
