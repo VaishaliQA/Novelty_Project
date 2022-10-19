@@ -112,6 +112,8 @@ a:hover,
     background-color: var(--brand-orange);
     font-weight: bold;
     border: none;
+    color: black;
+    box-shadow: none;
 }
 
 .browseButton,
@@ -126,10 +128,12 @@ a:hover,
     cursor: pointer;
 }
 
-.button:hover {
+.button:hover,
+.card-footer:hover {
     background-color: var(--brand-orange-hover);
     font-weight: bold;
     cursor: pointer;
+    color: black;
 }
 
 .label {
@@ -308,13 +312,14 @@ a:hover,
 .card-content {
     color: white;
     border-bottom: 2px solid white;
-    border-color: white;
     display: flex;
 }
 
 .card-footer {
     background-color: var(--brand-orange);
     color: black;
+    margin-top: -2px;
+    font-weight: bold;
 }
 
 .card-footer > a {
