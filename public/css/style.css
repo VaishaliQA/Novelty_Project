@@ -121,9 +121,15 @@ a:hover,
     border: none;
 }
 
+.browseButton:hover,
+.yourLibraryButton:hover {
+    cursor: pointer;
+}
+
 .button:hover {
     background-color: var(--brand-orange-hover);
     font-weight: bold;
+    cursor: pointer;
 }
 
 .label {
