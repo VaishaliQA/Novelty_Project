@@ -284,6 +284,10 @@ a:hover,
     border: 2px solid white;
 }
 
+.card:hover {
+    opacity: 75%;
+}
+
 .card-header-title {
     color: white;
 }
