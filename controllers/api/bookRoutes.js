@@ -106,7 +106,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
 
-    if (req.body.borrower_id = req.session.user_id) {
+    if (req.body.borrower_id == req.session.user_id) {
       const updateStatus = await Book.update({
         available : true, 
         borrower_id : null
