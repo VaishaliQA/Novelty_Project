@@ -465,6 +465,10 @@ li {
     cursor: pointer;
 }
 
+.signupButton {
+    margin-bottom: 25px;
+}
+
 .welcome-message {
     color: white;
     margin-left: 25px;
