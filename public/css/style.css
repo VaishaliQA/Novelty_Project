@@ -1,8 +1,8 @@
 /* Global css */
 :root {
     font-family: Arial, Helvetica, sans-serif;
-    --brand-orange: #f9cb9cff;
-    --brand-orange-hover: rgb(249, 211, 173);
+    --brand-orange: rgb(249, 203, 156);
+    --brand-orange-hover: rgb(248, 217, 184);
     --step-hover-bg: rgba(249, 211, 173, .5);
 }
 
@@ -33,7 +33,7 @@ body {
     display: flex;
     align-items: flex-end;
     margin-left: 10px;
-    margin-bottom: -5px;
+    margin-bottom: -3px;
 }
 
 .browseButton:hover,
@@ -47,6 +47,8 @@ body {
 .yourLibraryButton,
 .logoutButton {
     border: none;
+    margin-top: 2px;
+    width: fit-content;
 }
 
 a,
@@ -109,11 +111,29 @@ a:hover,
 .button {
     background-color: var(--brand-orange);
     font-weight: bold;
+    border: none;
+    color: black;
+    box-shadow: none;
 }
 
-.button:hover {
+.browseButton,
+.yourLibraryButton {
+    background-color: rgba(1, 1, 1, 0);
+    font-weight: bold;
+    border: none;
+}
+
+.browseButton:hover,
+.yourLibraryButton:hover {
+    cursor: pointer;
+}
+
+.button:hover,
+.card-footer:hover {
     background-color: var(--brand-orange-hover);
     font-weight: bold;
+    cursor: pointer;
+    color: black;
 }
 
 .label {
@@ -184,6 +204,7 @@ a:hover,
 
 .browse-book:hover {
     cursor: pointer;
+    opacity: 75%;
 }
 
 .num {
@@ -261,6 +282,7 @@ a:hover,
     border: 3px solid white;
     padding: 10px;
     margin: 25px 12px 25px 12px;
+    color: var(--brand-orange);
 }
 
 .profile {
@@ -296,13 +318,14 @@ a:hover,
 .card-content {
     color: white;
     border-bottom: 2px solid white;
-    border-color: white;
     display: flex;
 }
 
 .card-footer {
     background-color: var(--brand-orange);
     color: black;
+    margin-top: -2px;
+    font-weight: bold;
 }
 
 .card-footer > a {
