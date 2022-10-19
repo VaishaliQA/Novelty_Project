@@ -5,7 +5,7 @@
   <section id="books-you-own-container" class="books-you-own-container">
     <section class="library-title">
       <h1>BOOKS YOU OWN</h1>
-      <section class="totals">TOTAL: {{#if booksOwned}}{{booksOwned.length}}{{/if}}</section>
+      <section class="totals">IN: {{#if booksOwned}}{{booksOwned.available.length}}{{/if}} OUT: TOTAL: {{#if booksOwned}}{{booksOwned.length}}{{/if}}</section>
     </section>
     <button
       id="add-book-button-library"
