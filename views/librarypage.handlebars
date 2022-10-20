@@ -16,6 +16,7 @@
 <!-- For each owned book, display as single in Library -->
 {{#each booksOwned as |singleBook| }}
     <section class="card">
+       <section class="delete-book-button" data-deleteBookId = "{{singleBook.id}}">X</section>
             <header class="card-content">
                 <section class="media-left">
                 <figure class="image is-96x128">
