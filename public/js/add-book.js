@@ -77,7 +77,7 @@ async function searchBook(isbnInput) {
         const thumbnail_url =
           "imageLinks" in bookData.volumeInfo
             ? bookData.volumeInfo.imageLinks.thumbnail
-            : "public/assets/img/bookplaceholder.png";
+            : "/assets/img/bookplaceholder.png";
 
         // grab 13 digit ISBN from array
         let isbn13 = "";
