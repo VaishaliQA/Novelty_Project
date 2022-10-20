@@ -12,3 +12,4 @@ document
   .querySelector("#statusSave")
   .addEventListener("click", saveBorrowerStatus);
 
+saveBorrowerStatus();
