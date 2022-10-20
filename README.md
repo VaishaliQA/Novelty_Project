@@ -20,7 +20,14 @@ Novelty let's a User login to a secure site and interact with a digital library.
 <!-- TODO: Complete installation steps -->
 
 ## Usage
-<!-- TODO: Complete usage steps -->
+To use this app in production, visit: https://novelty-book-swap.herokuapp.com/
+
+To run this locally:
+
+1. Pull down and branch this repository
+2. Run ```npm i``` to install all dependencies
+3. Seed the database by running ```node seeds/seed.js```
+4. Run the app with ```node server.js``` or ```npm start```
 
 ## License
 This project is licensed under the MIT license.
@@ -28,17 +35,29 @@ This project is licensed under the MIT license.
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.<p />For more information visit https://choosealicense.com/licenses/mit/.
 
 ## Contributing
-<!-- TODO: Complete contribution steps -->
+We'd love for you to contribute. We currently require two(2) reviews in order to merge to ```main```. Here's are look at what we'd like to add in the future:
+
+* Signup ***TBD***
+* Search for books by name, title, etc..
+* Use SendGrid to email a templated request
+* Change book status 
+* Forgot password
+* Update your profile
+* Delete books ***TBD***
+* In-app messaging
+* Accountability (some type of reminder / due date, etc..)
+* Rate a lender / borrower
+* Ability to upload photos, damage tracking, reporting, etc..
+* Explore tab with new books
+* Explore tab with recommendations based off of history
 
 ## Tests
 None
 
 ## Questions
 Find us on Github via the individual links below:
-<!-- TODO: Link these -->
-<br>
-Vaishali Patel<br>
-Mac Greene<br>
-Insha Sayani<br>
-Michael Martens<br>
-Jon Shogren
+* [Vaishali Patel](https://github.com/VaishaliQA)<br>
+* [Mac Greene](https://github.com/macgreene14)<br>
+* [Insha Sayani](https://github.com/isayani)<br>
+* [Michael Martens](https://github.com/makeithappenmike)<br>
+* [Jon Shogren](https://github.com/shogren)
