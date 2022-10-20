@@ -1,15 +1,22 @@
 // Put request for saving borrower to db
 async function saveBorrowerStatus(event){
-    const borrower_id = document.querySelector("#singleBorrower").value;
     const bookId = event.target.getAttribute("data-bookId");
+    const borrower_id = document.querySelector(`#singleBorrower${bookId}`).value;
     const response = await fetch(`/api/books/${bookId}`, {
         method: "PUT",
         body: JSON.stringify({ borrower_id }),
         headers: { "Content-Type": "application/json" },
       });
-}
-document
-  .querySelector("#statusSave")
-  .addEventListener("click", saveBorrowerStatus);
+    if (response.ok) {
+      window.location.reload();
+    } else {
+      console.log(response);
+    };
+};
+const saveBtn = document
+  .querySelectorAll("#statusSave")
 
-saveBorrowerStatus();
+  for (let index = 0; index < saveBtn.length; index++) {
+    saveBtn[index].addEventListener("click", saveBorrowerStatus);
+  };
+

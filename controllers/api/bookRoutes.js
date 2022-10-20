@@ -92,7 +92,7 @@ router.post("/", async (req, res) => {
       thumbnail_url: req.body.thumbnail_url,
       owner_id: req.session.user_id,
       borrower_id: null,
-      available: false,
+      available: true,
     });
     res.status(200).json(postData);
   } catch (err) {

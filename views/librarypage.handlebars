@@ -40,7 +40,7 @@
                     <li><span class="library-book-title">Borrower</span>:
 
                     {{!-- Dropdown to display all Users in Status --}}
-                    <select name="statusDropdown" id="singleBorrower">
+                    <select name="statusDropdown" id="singleBorrower{{singleBook.id}}">
                     {{#if singleBook.available}}
                     <option>None</option>
                     {{else}}
@@ -55,7 +55,7 @@
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item" id="statusSave" data-bookId = "{{singleBook.id}}">Save</a>
+                <a href="#" class="card-footer-item" id="statusSave" data-bookId="{{singleBook.id}}">Save</a>
             </footer>
             </section>
   {{/each}}
@@ -104,7 +104,7 @@
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item">Return Book</a>
+                <a href="#" class="card-footer-item" id="return-book-btn">Return Book</a>
             </footer>
             </section>
 {{/each}}
