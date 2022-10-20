@@ -1,18 +1,25 @@
 // Delete request for saving borrower to db
+const libEl = document.querySelector(".library")
+
 async function deleteBook(event){
+    const target = event.target
+    const bookId = target.dataset.deletebookid;
 
-    const deleteBookId = event.target.getAttribute("data-deleteBookId");
-    console.log(deleteBookId);
-
-    if (deleteBookId) {
-        const response = await fetch(`/api/books/${deleteBookId}`, {
+    if (bookId) {
+        const response = await fetch(`/api/books/${bookId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
           });
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            console.log(response);
+          };
     } else {
         console.log("error");
     }
+
+    
 }
-document
-  .querySelector(".library")
-  .addEventListener("click", deleteBook);
+libEl.addEventListener("click", deleteBook);
+
