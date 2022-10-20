@@ -207,6 +207,7 @@ a:hover,
 
 .owned-book-header {
     width: 100%;
+    text-transform: uppercase;
 }
 
 .step:hover,
@@ -464,6 +465,11 @@ li {
 .add-book-button-library,
 .borrow-book-button {
     margin-bottom: 25px;
+}
+
+.add-book-button-library {
+    height: 100px;
+    width: 50%;
 }
 
 .Disabled,
