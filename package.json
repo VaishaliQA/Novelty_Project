@@ -1,7 +1,7 @@
 {
   "name": "user-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "Book management portal using Express.js and Sequelize to interact with a MySQL database.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,5 +23,14 @@
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VaishaliQA/Novelty_Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VaishaliQA/Novelty_Project/issues"
+  },
+  "homepage": "https://github.com/VaishaliQA/Novelty_Project#readme"
 }

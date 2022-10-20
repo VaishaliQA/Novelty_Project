@@ -115,8 +115,8 @@ function displayModal(e) {
         console.log("Triggering MailTo Form");
         const bookTitle = data.title;
         const ownerEmail = data.owner.email;
-        const emailTitle = "Request to Borrow Book";
-        const emailMessage = `Hello! I would like to borrow ${bookTitle}`;
+        const emailTitle = "[NOVELty] New Borrow Request";
+        const emailMessage = `We've received a new request to borrow ${bookTitle}. This email chain will serve as your point of communication to handle delivery and return of the book.`;
 
         emailTitle.replace(" ", "%20");
         emailMessage.replace(" ", "%20");

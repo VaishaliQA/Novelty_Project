@@ -16,7 +16,7 @@
 <!-- For each owned book, display as single in Library -->
 {{#each booksOwned as |singleBook| }}
     <section class="card">
-            <section class="delete-book-button">X</section>
+       <section class="delete-book-button" data-deleteBookId = "{{singleBook.id}}">X</section>
             <header class="card-content">
                 <section class="media-left">
                 <figure class="image is-96x128">
@@ -40,7 +40,7 @@
                     <li><span class="library-book-title">Borrower</span>:
 
                     {{!-- Dropdown to display all Users in Status --}}
-                    <select name="statusDropdown" id="singleBorrower">
+                    <select name="statusDropdown" id="singleBorrower{{singleBook.id}}">
                     {{#if singleBook.available}}
                     <option>None</option>
                     {{else}}
@@ -55,7 +55,7 @@
                 </section>
             </section>
             <footer class="card-footer">
-                <a href="#" class="card-footer-item" id="statusSave" data-bookId = "{{singleBook.id}}">Save</a>
+                <a href="#" class="card-footer-item" id="statusSave" data-bookId="{{singleBook.id}}">Save</a>
             </footer>
             </section>
   {{/each}}
@@ -213,4 +213,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="module" src="/js/add-book.js"></script>
 <script type="module" src="/js/saveBorrowerStatus.js"></script>
+<script type="module" src="/js/delete-book.js"></script>
 
