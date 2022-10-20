@@ -105,25 +105,29 @@ router.post("/", async (req, res) => {
 // localhost:3001/api/books/:id
 router.put("/:id", async (req, res) => {
   try {
-
     if (req.body.borrower_id == req.session.user_id) {
-      const updateStatus = await Book.update({
-        available : true, 
-        borrower_id : null
-      }, {
-        where: { id: req.params.id },
-      });
+      const updateStatus = await Book.update(
+        {
+          available: true,
+          borrower_id: null,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      );
       res.status(200).json(updateStatus);
     } else {
-      const updateStatus = await Book.update({
-        available : false, 
-        borrower_id : req.body.borrower_id
-      }, {
-        where: { id: req.params.id },
-      });
+      const updateStatus = await Book.update(
+        {
+          available: false,
+          borrower_id: req.body.borrower_id,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      );
       res.status(200).json(updateStatus);
     }
-    
   } catch (error) {
     console.error(error);
     res.status(400).end();
@@ -132,6 +136,16 @@ router.put("/:id", async (req, res) => {
 
 // DELETE book by id
 // localhost:3001/api/books/:id
-router.delete("/:id", async (req, res) => {});
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteBook = await Book.destroy({
+      where: { id: req.params.id },
+    });
+    res.status(200).json({ message: `${deleteBook} Book(s) Deleted` });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: "Error" }).end();
+  }
+});
 
 module.exports = router;

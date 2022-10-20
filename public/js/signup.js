@@ -2,7 +2,6 @@ const signUpLink = document.querySelector(".signup");
 const signUpEl = document.getElementById("signup-modal");
 
 signUpLink.addEventListener("click", () => {
-  console.log("click");
   displayModal();
 });
 
@@ -47,13 +46,14 @@ function makeModal() {
             class="input signup-input"
             type="text"
             placeholder="Email"
-          />
+            required/>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
+          <p id="emailMsg" style="color:red; display:none;"> *Email is required. </p> <!-- Handle Error Message -->
         </p>
       </section>
 
@@ -65,7 +65,7 @@ function makeModal() {
             id="signup-input-password"
             class="input signup-input"
             type="password"
-            placeholder="password"
+            placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required
           />
           <span class="icon is-small is-left">
             <i class="fas fa-address-card"></i>
@@ -73,6 +73,7 @@ function makeModal() {
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
+          <p id="passwordMsg" style="color:red; display:none;"> *Password length must be 8 character or more. </p> <!-- Handle Error Message -->
         </p>
       </section>      
 
@@ -85,13 +86,14 @@ function makeModal() {
             class="input signup-input"
             type="text"
             placeholder="First Name"
-          />
+            required/>
           <span class="icon is-small is-left">
             <i class="fas fa-address-card"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
+          <p id="firstNameMsg" style="color:red; display:none;"> *First name is required. </p> <!-- Handle Error Message -->
         </p>
       </section>
 
@@ -104,13 +106,15 @@ function makeModal() {
             class="input signup-input"
             type="text"
             placeholder="Last Name"
-          />
+            required/>
           <span class="icon is-small is-left">
             <i class="fas fa-address-card"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
+          <p id="lastNameMsg" style="color:red; display:none;"> *Last name is required. </p> <!-- Handle Error Message -->
+   
         </p>
       </section>
 
@@ -135,7 +139,7 @@ function makeModal() {
 
         <section id="signup-message" class="signup-message">
         </section>
-        <button class="button is-normal signupButton" id="signupButton">Sign Up</button>
+        <button type="submit" class="button is-normal signupButton" id="signupButton">Sign Up</button>
       </section>
     </section>
 
@@ -184,27 +188,73 @@ function displayModal() {
   }
 
   signupButton.addEventListener("click", (e) => {
-    const email = document.getElementById("signup-input-email").value;
-    const password = document.getElementById("signup-input-password").value;
-    const firstName = document.getElementById("signup-input-first_name").value;
-    const lastName = document.getElementById("signup-input-last_name").value;
-    const location = document.getElementById("signup-input-location").value;
+    // Start - Validation of rquired field in signup
+    var passwordMsg = document.getElementById("passwordMsg");
+    var password = document.getElementById("signup-input-password");
+    var emailMsg = document.getElementById("emailMsg");
+    var email = document.getElementById("signup-input-email");
+    var firstNameMsg = document.getElementById("firstNameMsg");
+    var firstName = document.getElementById("signup-input-first_name");
+    var lastNameMsg = document.getElementById("lastNameMsg");
+    var lastName = document.getElementById("signup-input-last_name");
+    var count = 0;
+    if (password.value.length < 8) {
+      passwordMsg.style.display = "block";
+      count = 1;
+    } else {
+      passwordMsg.style.display = "none";
+      count = 0;
+    }
+    if (email.value.length === 0) {
+      emailMsg.style.display = "block";
+      count = 1;
+    } else {
+      emailMsg.style.display = "none";
+      count = 0;
+    }
+    if (firstName.value.length === 0) {
+      firstNameMsg.style.display = "block";
+      count = 1;
+    } else {
+      firstNameMsg.style.display = "none";
+      count = 0;
+    }
+    if (lastName.value.length === 0) {
+      lastNameMsg.style.display = "block";
+      count = 1;
+    } else {
+      lastNameMsg.style.display = "none";
+      count = 0;
+    }
+    if (count === 1) {
+      console.log("one of required field is blank.");
+    } else {
+      // End Here
+      const email = document.getElementById("signup-input-email").value;
+      const password = document.getElementById("signup-input-password").value;
+      const firstName = document.getElementById(
+        "signup-input-first_name"
+      ).value;
+      const lastName = document.getElementById("signup-input-last_name").value;
+      const location = document.getElementById("signup-input-location").value;
 
-    const userObj = {
-      email: email,
-      password: password,
-      first_name: firstName,
-      last_name: lastName,
-      location: location,
-    };
+      const userObj = {
+        email: email,
+        password: password,
+        first_name: firstName,
+        last_name: lastName,
+        location: location,
+      };
 
-    postUser(userObj)
-      .then(
-        (signUpMessage.innerHTML = `<p class="book-added-message">Request Submitted!</p>`)
-      )
-      .catch((e) => {
-        signUpMessage.innerHTML = `<p class="book-added-message">Password Must Be 8 Characters or More!</p>`;
-      });
+      postUser(userObj)
+        .then(() => {
+          // Updated error message and close signup dialog
+          alert("New user is created.");
+          sectionModal.firstChild.classList.remove("is-active");
+        })
+        .catch((e) => {
+          signUpMessage.innerHTML = `<p class="book-added-message">Password Must Be 8 Characters or More!</p>`;
+        });
+    }
   });
 }
-// }

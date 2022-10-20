@@ -136,9 +136,22 @@ a:hover,
     color: black;
 }
 
+.delete-book-button {
+    color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: end;
+}
+
+.delete-book-button:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .label {
     color: white;
 }
+
 
 /* Used on browse page to show steps */
 
@@ -252,11 +265,6 @@ a:hover,
 .browse-book-title {
     font-weight: bold;
 }
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
 
 /* Begin Library CSS */
 
