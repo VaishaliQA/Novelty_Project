@@ -114,10 +114,12 @@ function displayModal(e) {
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering MailTo Form");
         const bookTitle = data.title;
+        const thumbnail_url = encodeURIComponent(data.thumbnail_url);
         const ownerEmail = data.owner.email;
+        const ownerName = data.owner.first_name;
 
         // sends the email
-        sendEmail();
+        sendEmail(bookTitle, thumbnail_url, ownerName);
 
         bookAddedMessage.innerHTML = `<p class="book-added-message">Requesting to borrow book from ${data.owner.first_name} ${data.owner.last_name}...</p>`;
       });

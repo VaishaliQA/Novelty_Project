@@ -1,8 +1,10 @@
 var submit = document.getElementById("borrowBtn")
 
-const sendEmail= async () => {
+const sendEmail= async (title, thumbnail, name) => {
 
-    response = await fetch("/api/email/sendEmail", {
+  let fullUrl = "/api/email/sendEmail/" + title + "/" + thumbnail + "/" + name ; 
+
+    response = await fetch(fullUrl, {
         method: 'post',
         body: JSON.stringify({}),
         headers: { "Content-Type": "application/json" },
