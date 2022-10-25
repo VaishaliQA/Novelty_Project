@@ -1,5 +1,35 @@
 const router = require('express').Router();
+require("dotenv").config();
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 const { Book, User } = require("../../models");
+
+router.post('/sendEmail', async (req, res) => {  
+  try {  
+    // define message date from api URL?
+    // hard coding variables for now during testing
+    // TODO: add additional book details from API post
+ 
+    //! Must have a TO and FROM to test!
+    const msg = {
+      template_id: "d-e8b4d3e225d644e6ad26a1c7f1c73f3e",
+      to: "", // your recipient
+      from: "", // your verified sender
+      dynamic_template_data: {
+        name: "Jon",
+        bookUrl: "https://m.media-amazon.com/images/I/51F0uan3+EL._AC_SY780_.jpg",
+        confirm: "https://www.mandrill.fun",
+      },
+    };
+    sgMail.send(msg)
+    console.log('Sent!')
+    res.send()
+  } catch (err) {
+    res.status(500).json(err);
+  }
+} )
+
+
 
 router.get('/api/email/:id', (req, res) => {      
   
