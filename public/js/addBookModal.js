@@ -113,13 +113,29 @@ function displayModal(e) {
 
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering MailTo Form");
-        const bookTitle = data.title;
-        const thumbnail_url = encodeURIComponent(data.thumbnail_url);
-        const ownerEmail = data.owner.email;
-        const ownerName = data.owner.first_name;
 
-        // sends the email
-        sendEmail(bookTitle, thumbnail_url, ownerName);
+        const sendEmail= async () => {
+          
+          response = await fetch("/api/email/sendEmail/", {
+          method: 'post',
+          body: new URLSearchParams({
+            'email': data.owner.email,
+            'name': data.owner.first_name,
+            'title': data.title,
+            'thumbnail': data.thumbnail_url 
+            }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          })
+          
+          if (response.ok) {
+              document.location.reload()
+              alert("Email Request Sent!");
+            } else {
+              alert("Failed to send email");
+            }
+          }
+  
+        sendEmail();
 
         bookAddedMessage.innerHTML = `<p class="book-added-message">Requesting to borrow book from ${data.owner.first_name} ${data.owner.last_name}...</p>`;
       });

@@ -1,27 +1,25 @@
 const router = require('express').Router();
+const { urlencoded } = require("express");
 require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
 const fromEmail = process.env.TEST_FROM;
 const toEmail = process.env.TEST_TO;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 const { Book, User } = require("../../models");
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post('/sendEmail/:title/:thumbnail/:name', async (req, res) => {  
+router.post('/sendEmail', async (req, res) => {  
   try {  
-    // define message date from api URL?
-    // hard coding variables for now during testing
-    // TODO: add additional book details from API post
-    const thumbnail = decodeURIComponent(req.params.thumbnail);
- 
-    //! Must have a TO to test
     const msg = {
       template_id: "d-e8b4d3e225d644e6ad26a1c7f1c73f3e",
+      // hard coding 'TO' and 'FROM' for now during testing
       to: toEmail, // your recipient
       from: fromEmail, // your verified sender
       dynamic_template_data: {
-        name: req.params.name,
-        bookTitle: req.params.title,
-        bookUrl: thumbnail,
+        name: req.body.name,
+        bookTitle: req.body.title,
+        bookUrl: req.body.thumbnail,
         confirm: "https://www.mandrill.fun",
       },
     };
@@ -32,7 +30,6 @@ router.post('/sendEmail/:title/:thumbnail/:name', async (req, res) => {
     res.status(500).json(err);
   }
 } )
-
 
 
 router.get('/api/email/:id', (req, res) => {      
