@@ -122,22 +122,25 @@ function displayModal(e) {
             'email': data.owner.email,
             'name': data.owner.first_name,
             'title': data.title,
-            'thumbnail': data.thumbnail_url 
+            'thumbnail': data.thumbnail_url,
+            'id': data.id
             }),
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
           
           if (response.ok) {
               document.location.reload()
-              alert("Email Request Sent!");
+              alert("Email Request Sent! Once the owner approves your request, the book will show up in your Library Page");
             } else {
               alert("Failed to send email");
             }
           }
-  
-        sendEmail();
-
-        bookAddedMessage.innerHTML = `<p class="book-added-message">Requesting to borrow book from ${data.owner.first_name} ${data.owner.last_name}...</p>`;
+        
+        if (data.available === true) {
+          sendEmail();
+        } else {
+          alert("This book is currently unavailable. Please check back later!");
+        }
       });
 
       // Configure read more link

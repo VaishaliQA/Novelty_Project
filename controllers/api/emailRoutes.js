@@ -14,13 +14,14 @@ router.post('/sendEmail', async (req, res) => {
     const msg = {
       template_id: "d-e8b4d3e225d644e6ad26a1c7f1c73f3e",
       // hard coding 'TO' and 'FROM' for now during testing
+      // to: req.body.email, // your recipient
       to: toEmail, // your recipient
       from: fromEmail, // your verified sender
       dynamic_template_data: {
         name: req.body.name,
         bookTitle: req.body.title,
         bookUrl: req.body.thumbnail,
-        confirm: "https://www.mandrill.fun",
+        confirm: "http://localhost:3001/api/email/" + req.body.id + "/" + req.session.user_id
       },
     };
     sgMail.send(msg)
@@ -32,13 +33,13 @@ router.post('/sendEmail', async (req, res) => {
 } )
 
 
-router.get('/api/email/:id', (req, res) => {      
+router.get('/:id/:borrower', (req, res) => {      
   
     // find one book by its `id` value
     Book.findOne(
       {
         where: {
-          isbn: req.params.id
+          id: req.params.id
         },
         attributes: ['id', 'isbn13', 'title', 'available'],
       }
@@ -48,8 +49,15 @@ router.get('/api/email/:id', (req, res) => {
         return;
       }
 
-      book.availability = false;
-      res.json(book);
+      console.log("before: " + book.availabile);
+
+      book.available = false;
+      book.borrower_id = req.params.borrower;
+
+      console.log("after: " + book.availabile);
+
+      res.status(200);
+      res.redirect('http://localhost:3001/librarypage')
 
       book.save((err) => {
         if (err) {
