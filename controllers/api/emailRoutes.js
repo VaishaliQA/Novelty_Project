@@ -12,9 +12,8 @@ router.post('/sendEmail', async (req, res) => {
   try {  
     const msg = {
       template_id: "d-e8b4d3e225d644e6ad26a1c7f1c73f3e",
-      // hard coding 'TO' and 'FROM' for now during testing
-      // to: req.body.email, // your recipient
-      to: toEmail, // your recipient
+      // hard coding 'TO' and 'FROM' for now during testing using toEmail in .env
+      to: req.body.email, // your recipient
       from: fromEmail, // your verified sender
       dynamic_template_data: {
         name: req.body.name,
