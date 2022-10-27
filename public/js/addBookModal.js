@@ -109,7 +109,6 @@ function displayModal(e) {
 
       // configure borrow button
       const borrowBtn = document.getElementById("borrowBtn");
-      const bookAddedMessage = document.getElementById("book-borrowed-message");
 
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering MailTo Form");

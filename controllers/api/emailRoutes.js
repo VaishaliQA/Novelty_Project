@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { urlencoded } = require("express");
 require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
 const fromEmail = process.env.TEST_FROM;
@@ -21,7 +20,10 @@ router.post('/sendEmail', async (req, res) => {
         name: req.body.name,
         bookTitle: req.body.title,
         bookUrl: req.body.thumbnail,
-        confirm: "http://localhost:3001/api/email/" + req.body.id + "/" + req.session.user_id
+        // prod
+        confirm: "https://novelty-book-swap.herokuapp.com/api/email/" + req.body.id + "/" + req.session.user_id
+        // dev
+        // confirm: "http://localhost:3001/api/email/" + req.body.id + "/" + req.session.user_id
       },
     };
     sgMail.send(msg)
@@ -57,7 +59,10 @@ router.get('/:id/:borrower', (req, res) => {
       console.log("after: " + book.availabile);
 
       res.status(200);
-      res.redirect('http://localhost:3001/librarypage')
+      // prod
+      res.redirect('https://novelty-book-swap.herokuapp.com/librarypage')
+      // dev
+      // res.redirect('http://localhost:3001/librarypage')
 
       book.save((err) => {
         if (err) {

@@ -92,7 +92,7 @@ async function loadBooksOwned(sampleISBN) {
       // Activate Add Book button
       addBookButton.classList.remove("Disabled");
 
-      // Post book to DB (TODO: Finish POST route)
+      // Post book to DB
       addBookButton.addEventListener("click", () => {
         console.log("Object to Post:", obj);
         bookAddedMessage.innerHTML = `<p class="book-added-message">Book added</p>`;
@@ -184,7 +184,7 @@ async function loadBooksBorrowed(sampleBorrowedISBN) {
       // Activate Add Book button
       addBookButton.classList.remove("Disabled");
 
-      // Post book to DB (TODO: Finish POST route)
+      // Post book to DB
       addBookButton.addEventListener("click", () => {
         console.log("Object to Post:", obj);
         bookAddedMessage.innerHTML = `<p class="book-added-message">Book added</p>`;
