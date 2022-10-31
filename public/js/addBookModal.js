@@ -109,20 +109,37 @@ function displayModal(e) {
 
       // configure borrow button
       const borrowBtn = document.getElementById("borrowBtn");
-      const bookAddedMessage = document.getElementById("book-borrowed-message");
 
       borrowBtn.addEventListener("click", (e) => {
         console.log("Triggering MailTo Form");
-        const bookTitle = data.title;
-        const ownerEmail = data.owner.email;
-        const emailTitle = "[NOVELty] New Borrow Request";
-        const emailMessage = `We've received a new request to borrow ${bookTitle}. This email chain will serve as your point of communication to handle delivery and return of the book.`;
 
-        emailTitle.replace(" ", "%20");
-        emailMessage.replace(" ", "%20");
-
-        window.location.href = `mailto:${ownerEmail}?subject=${emailTitle}&body=${emailMessage}`;
-        bookAddedMessage.innerHTML = `<p class="book-added-message">Requesting to borrow book from ${data.owner.first_name} ${data.owner.last_name}...</p>`;
+        const sendEmail= async () => {
+          
+          response = await fetch("/api/email/sendEmail/", {
+          method: 'post',
+          body: new URLSearchParams({
+            'email': data.owner.email,
+            'name': data.owner.first_name,
+            'title': data.title,
+            'thumbnail': data.thumbnail_url,
+            'id': data.id
+            }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          })
+          
+          if (response.ok) {
+              document.location.reload()
+              alert("Email Request Sent! Once the owner approves your request, the book will show up in your Library Page");
+            } else {
+              alert("Failed to send email");
+            }
+          }
+        
+        if (data.available === true) {
+          sendEmail();
+        } else {
+          alert("This book is currently unavailable. Please check back later!");
+        }
       });
 
       // Configure read more link

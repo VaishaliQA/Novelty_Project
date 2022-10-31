@@ -1,13 +1,46 @@
 const router = require('express').Router();
+require("dotenv").config();
+const sgMail = require("@sendgrid/mail");
+const fromEmail = process.env.TEST_FROM;
+const toEmail = process.env.TEST_TO;
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 const { Book, User } = require("../../models");
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/api/email/:id', (req, res) => {      
+router.post('/sendEmail', async (req, res) => {  
+  try {  
+    const msg = {
+      template_id: "d-e8b4d3e225d644e6ad26a1c7f1c73f3e",
+      // hard coding 'TO' and 'FROM' for now during testing using toEmail in .env
+      to: req.body.email, // your recipient
+      from: fromEmail, // your verified sender
+      dynamic_template_data: {
+        name: req.body.name,
+        bookTitle: req.body.title,
+        bookUrl: req.body.thumbnail,
+        // prod
+        confirm: "https://novelty-book-swap.herokuapp.com/api/email/" + req.body.id + "/" + req.session.user_id
+        // dev
+        // confirm: "http://localhost:3001/api/email/" + req.body.id + "/" + req.session.user_id
+      },
+    };
+    sgMail.send(msg)
+    console.log('Sent!')
+    res.send()
+  } catch (err) {
+    res.status(500).json(err);
+  }
+} )
+
+
+router.get('/:id/:borrower', (req, res) => {      
   
     // find one book by its `id` value
     Book.findOne(
       {
         where: {
-          isbn: req.params.id
+          id: req.params.id
         },
         attributes: ['id', 'isbn13', 'title', 'available'],
       }
@@ -17,8 +50,18 @@ router.get('/api/email/:id', (req, res) => {
         return;
       }
 
-      book.availability = false;
-      res.json(book);
+      console.log("before: " + book.availabile);
+
+      book.available = false;
+      book.borrower_id = req.params.borrower;
+
+      console.log("after: " + book.availabile);
+
+      res.status(200);
+      // prod
+      res.redirect('https://novelty-book-swap.herokuapp.com/librarypage')
+      // dev
+      // res.redirect('http://localhost:3001/librarypage')
 
       book.save((err) => {
         if (err) {
